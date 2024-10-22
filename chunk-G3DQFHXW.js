@@ -1,0 +1,1 @@
+import{c as t,e as o,r,x as i}from"./chunk-QS6LPP43.js";var c=[],p=(()=>{class e{static \u0275fac=function(n){return new(n||e)};static \u0275mod=o({type:e});static \u0275inj=t({imports:[i.forChild(c),i]})}return e})();var _=(()=>{class e{static \u0275fac=function(n){return new(n||e)};static \u0275mod=o({type:e});static \u0275inj=t({imports:[r,p]})}return e})();export{_ as a};
