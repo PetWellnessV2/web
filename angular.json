@@ -102,12 +102,7 @@
           }
         },
         "deploy": {
-          "builder": "@angular/fire:deploy",
-          "options": {
-            "prerender": false,
-            "ssr": false,
-            "baseHref": "/web/"
-          }
+          "builder": "@angular/fire:deploy"
         }
       }
     }
