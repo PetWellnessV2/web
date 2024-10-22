@@ -35,17 +35,17 @@ export class SigninComponent implements OnInit, AfterViewInit {
     const Fondo = document.getElementById("Fondo") as HTMLElement;
     switch (this.UsuarioService.GetUsuarioActivo()) {
       case "Dueños": {
-        Imagen.style.setProperty("--fondo", `url('/assets/fondo-dueno.png')`);
+        Imagen.style.setProperty("--fondo", `url('./assets/fondo-dueno.png')`);
         Fondo.style.setProperty("--tamano", "1330px");
         break;
       }
       case "Veterinario": {
-        Imagen.style.setProperty("--fondo", `url('/assets/fondo-vet.png')`);
+        Imagen.style.setProperty("--fondo", `url('./assets/fondo-vet.png')`);
         Fondo.style.setProperty("--tamano", "1539px");
         break;
       }
       case "Albergues": {
-        Imagen.style.setProperty("--fondo", `url('/assets/fondo-albergue.png')`);
+        Imagen.style.setProperty("--fondo", `url('./assets/fondo-albergue.png')`);
         Fondo.style.setProperty("--tamano", "1539px");
         break;
       }
