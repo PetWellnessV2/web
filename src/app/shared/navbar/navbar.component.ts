@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  activeLabel: string = '';
+  activeLabel: string = 'Inicio';
   
   setActiveLabel(label: string){
     this.activeLabel = label;

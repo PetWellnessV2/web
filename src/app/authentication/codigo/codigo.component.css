@@ -1,0 +1,139 @@
+#Cuerpo {
+    zoom: 100%; 
+    min-height: 100vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    place-content: center;
+    background-image: var(--fondo);
+    background-size: cover;
+}
+
+#Fondo {
+    margin: 25px 0;
+    box-sizing: border-box;
+    width: 720px;
+    height: 850px;
+    border-radius: 25px;
+    background: #FFF;
+    place-content: center;
+    align-items: center;
+    justify-items: center;
+    display: grid;
+    grid-template-rows: 10% 10% 5% 33% 18% 10%;
+}
+
+.Verificar {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    width: 187px;
+    height: 105px;
+}
+
+h1 {
+    color: #000;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 18.4px;
+}
+
+h4 {
+    color: #000;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 18.4px;
+    width: 340px;
+}
+
+.Reenviar {
+    text-align: center;
+    cursor: pointer;
+}
+
+.Reenviar:hover {
+    opacity: 40%;
+}
+
+section {
+    width: 419px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+button {
+    box-sizing: border-box;
+    display: flex;
+    width: 150px;
+    height: 50px;
+    padding: 21px 0px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    border: 0;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: #F0F0F0;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18.4px;
+}
+
+.Cancelar {
+    grid-row-start: -2;
+    background-color: #D3EFF3;
+    color: #5CB4B5;
+}
+
+.Siguiente {
+    grid-row-start: -2;
+    background-color: #0099B2;
+    color: #F0F0F0;
+}
+
+button:hover {
+    background-color: #000;
+    opacity: 20%;
+}
+
+.botones {
+    display: flex;
+    flex-direction: row;
+    column-gap: 120px;
+}
+
+.codigo {
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+}
+
+.codigo input {
+    width: 71px;
+    height: 88px;
+    background-color: #D9D9D9;
+    border: 0;
+    border-radius: 35%;
+    box-sizing: border-box;
+    padding: 17px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 18.4px;
+    text-align: center;
+}
+
+span {
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    padding-left: 10%;
+}

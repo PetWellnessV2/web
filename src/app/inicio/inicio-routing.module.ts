@@ -4,8 +4,6 @@ import { InicioComponent } from './inicio.component';
 import { TareasComponent } from './tareas/tareas.component';
 
 const routes: Routes = [
-  { path: '', component: InicioComponent },
-  { path: 'tareas', component: TareasComponent }
 ];
 
 @NgModule({

@@ -1,1 +1,23 @@
-<p>login works!</p>
+<body id="Cuerpo">
+    <section id="Fondo">
+        <img src="/assets/Logo.png" alt="logo-Petwellness">
+        <h1>Accede a tu cuenta</h1>
+        <app-barra-usuario (click)="CambiarImagen()"></app-barra-usuario>
+        <form action="/">
+            <section>
+                <h3>Email</h3>
+                <input type="email" name="Email" required>
+            </section>
+            <section class="Contra">
+                <h3>Contraseña</h3>
+                <input id="Ver-contrasena" type="password" name="Contrasena" required>
+                <img id="Ojo" (click)="OcultarContrasena()" class="Ver-contrasena" src="/assets/ojo.png" alt="Ojo de vista de contraseña">
+            </section>
+            <button class="Acceder">Acceder</button>
+            <span class="Recuperar" routerLink="/authentication/verificacion">Olvidé mi contraseña</span>
+            <span class="Separador"></span>
+            <span>¿No tienes cuenta?</span>
+            <button class="Crear" routerLink="/authentication/signin">Crear una cuenta</button>
+        </form>
+    </section>
+</body>

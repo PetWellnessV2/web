@@ -8,6 +8,8 @@ import { RecordatoriosComponent } from './recordatorios/recordatorios.component'
 import { AnimalesComponent } from './animales/animales.component';
 import { InicioDuenoComponent } from './inicio-dueno/inicio-dueno.component';
 import { InicioVetComponent } from './inicio-vet/inicio-vet.component';
+import { ProxConsultasComponent } from './prox-consultas/prox-consultas.component';
+import { ProxPacientesComponent } from './prox-pacientes/prox-pacientes.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { InicioVetComponent } from './inicio-vet/inicio-vet.component';
     RecordatoriosComponent,
     AnimalesComponent,
     InicioDuenoComponent,
-    InicioVetComponent
+    InicioVetComponent,
+    ProxConsultasComponent,
+    ProxPacientesComponent
   ],
   imports: [
     CommonModule,

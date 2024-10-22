@@ -1,0 +1,78 @@
+<datalist id="Tipos-albergue">
+    <option value="A"></option>
+    <option value="B"></option>
+    <option value="C"></option>
+    <option value="D"></option>
+</datalist>
+<datalist id="Especialidad">
+    <option value="A"></option>
+    <option value="B"></option>
+    <option value="C"></option>
+    <option value="D"></option>
+</datalist>
+<datalist id="Institucion-educativa">
+    <option value="A"></option>
+    <option value="B"></option>
+    <option value="C"></option>
+    <option value="D"></option>
+</datalist>
+<body id="Cuerpo">
+    <section id="Fondo">
+        <img src="/assets/Logo.png" alt="logo-Petwellness">
+        <h1>Crea una cuenta</h1>
+        <app-barra-usuario (click)="CambiarImagen()"></app-barra-usuario>
+        <form action="/">
+            <section>
+                <h3>Nombres</h3>
+                <input type="text" name="Nombre" required>
+            </section>
+            <section>
+                <h3>Apellidos</h3>
+                <input type="text" name="Apellido" required>
+            </section>
+            <section>
+                <h3>Email</h3>
+                <input id="Email" type="email" name="Email" (click)="VerEmail=false" required>
+                <small *ngIf="VerEmail"><br>No tiene el formato.</small>
+            </section>
+            <section>
+                <h3>Teléfono</h3>
+                <input id="Telefono" type="tel" name="Telefono" (click)="VerTelefono=false" required>
+                <small *ngIf="VerTelefono"><br>No tiene el formato.</small>
+            </section>
+            <section *ngIf="Mostrar()=='Albergues'">
+                <h3>Nombre del albergue</h3>
+                <input type="text" name="Nombre-albergue" required>
+            </section>
+            <section *ngIf="Mostrar()=='Albergues'">
+                <h3>Tipo de albergue</h3>
+                <input list="Tipos-albergue" name="Tipo-albergue" required>
+            </section>
+            <section *ngIf="Mostrar()=='Veterinario'">
+                <h3>Especialidad</h3>
+                <input list="Especialidad" name="Especialidad" required>
+            </section>
+            <section *ngIf="Mostrar()=='Veterinario'">
+                <h3>Institución educativa</h3>
+                <input list="Institucion-educativa" name="Institucion-educativa" required>
+            </section>
+            <section class="Contra">
+                <h3>Contraseña</h3>
+                <input id="Ver-contrasena_1" type="password" name="Contrasena" (click)="VerContrasena=false" (click)="VerContrasenaDiferente=false" required>
+                <img (click)="OcultarContrasena()" class="Ver-contrasena" src="/assets/ojo.png" alt="Ojo de vista de contraseña">
+                <small *ngIf="VerContrasena"><br>Debe tener "aA0".</small>
+                <small *ngIf="VerContrasenaDiferente"><br>Las contraseñas son diferentes.</small>
+            </section>
+            <section class="Contra">
+                <h3>Confirmar contraseña</h3>
+                <input id="Ver-contrasena_2" type="password" name="Confirmar-contrasena" (click)="VerContrasenaDiferente=false" required>
+                <img (click)="OcultarContrasena()" class="Ver-contrasena" src="/assets/ojo.png" alt="Ojo de vista de contraseña">
+                <small *ngIf="VerContrasenaDiferente"><br>Las contraseñas son diferentes.</small>
+            </section>
+            <button (click)="ValidarFormulario()" class="Crear">Crear cuenta</button>
+            <span class="Separador"></span>
+            <span>¿Ya tienes una cuenta?</span>
+            <button class="Acceder" routerLink="/authentication/login">Acceder a tu cuenta</button>
+        </form>
+    </section>
+</body>
