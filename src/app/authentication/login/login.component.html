@@ -1,6 +1,6 @@
 <body id="Cuerpo">
     <section id="Fondo">
-        <img src="/assets/Logo.png" alt="logo-Petwellness">
+        <img src="./assets/Logo.png" alt="logo-Petwellness">
         <h1>Accede a tu cuenta</h1>
         <app-barra-usuario (click)="CambiarImagen()"></app-barra-usuario>
         <form action="/">
@@ -11,7 +11,7 @@
             <section class="Contra">
                 <h3>Contraseña</h3>
                 <input id="Ver-contrasena" type="password" name="Contrasena" required>
-                <img id="Ojo" (click)="OcultarContrasena()" class="Ver-contrasena" src="/assets/ojo.png" alt="Ojo de vista de contraseña">
+                <img id="Ojo" (click)="OcultarContrasena()" class="Ver-contrasena" src="./assets/ojo.png" alt="Ojo de vista de contraseña">
             </section>
             <button class="Acceder">Acceder</button>
             <span class="Recuperar" routerLink="/authentication/verificacion">Olvidé mi contraseña</span>

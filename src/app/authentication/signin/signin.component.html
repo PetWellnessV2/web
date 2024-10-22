@@ -18,7 +18,7 @@
 </datalist>
 <body id="Cuerpo">
     <section id="Fondo">
-        <img src="/assets/Logo.png" alt="logo-Petwellness">
+        <img src="./assets/Logo.png" alt="logo-Petwellness">
         <h1>Crea una cuenta</h1>
         <app-barra-usuario (click)="CambiarImagen()"></app-barra-usuario>
         <form action="/">
@@ -59,14 +59,14 @@
             <section class="Contra">
                 <h3>Contraseña</h3>
                 <input id="Ver-contrasena_1" type="password" name="Contrasena" (click)="VerContrasena=false" (click)="VerContrasenaDiferente=false" required>
-                <img (click)="OcultarContrasena()" class="Ver-contrasena" src="/assets/ojo.png" alt="Ojo de vista de contraseña">
+                <img (click)="OcultarContrasena()" class="Ver-contrasena" src="./assets/ojo.png" alt="Ojo de vista de contraseña">
                 <small *ngIf="VerContrasena"><br>Debe tener "aA0".</small>
                 <small *ngIf="VerContrasenaDiferente"><br>Las contraseñas son diferentes.</small>
             </section>
             <section class="Contra">
                 <h3>Confirmar contraseña</h3>
                 <input id="Ver-contrasena_2" type="password" name="Confirmar-contrasena" (click)="VerContrasenaDiferente=false" required>
-                <img (click)="OcultarContrasena()" class="Ver-contrasena" src="/assets/ojo.png" alt="Ojo de vista de contraseña">
+                <img (click)="OcultarContrasena()" class="Ver-contrasena" src="./assets/ojo.png" alt="Ojo de vista de contraseña">
                 <small *ngIf="VerContrasenaDiferente"><br>Las contraseñas son diferentes.</small>
             </section>
             <button (click)="ValidarFormulario()" class="Crear">Crear cuenta</button>
