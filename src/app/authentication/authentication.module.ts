@@ -15,15 +15,15 @@ import { CambiarContrasenaComponent } from './cambiar-contrasena/cambiar-contras
   declarations: [
     AuthenticationComponent,
     LoginComponent,
-    SigninComponent,
-    BarraUsuarioComponent,
     VerificacionComponent,
     CodigoComponent,
     CambiarContrasenaComponent
   ],
   imports: [
     CommonModule,
-    AuthenticationRoutingModule
+    AuthenticationRoutingModule,
+    SigninComponent,
+    BarraUsuarioComponent
   ]
 })
 export class AuthenticationModule { }

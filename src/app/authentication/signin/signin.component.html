@@ -5,39 +5,56 @@
     <option value="D"></option>
 </datalist>
 <datalist id="Especialidad">
-    <option value="A"></option>
-    <option value="B"></option>
-    <option value="C"></option>
-    <option value="D"></option>
+    <option value="CIRUGIA"></option>
+    <option value="NUTRICION"></option>
+    <option value="CARDIOLOGIA"></option>
+    <option value="FISIOTERAPIA"></option>
+    <option value="ONCOLOGIA"></option>
+    <option value="MEDICINA_FELINA"></option>
+    <option value="ODONTOLOGIA"></option>
+    <option value="REHABILITACION"></option>
+    <option value="TRAUMATOLOGIA"></option>
+    <option value="ODONTILOGIA"></option>
 </datalist>
 <datalist id="Institucion-educativa">
-    <option value="A"></option>
-    <option value="B"></option>
-    <option value="C"></option>
-    <option value="D"></option>
+    <option value="UNIVERSIDAD_NACIONAL_MAYOR_DE_SAN_MARCOS"></option>
+    <option value="UNIVERSIDAD_CIENTIFICA_DEL_SUR"></option>
+    <option value="UNIVERSIDAD_NACIONAL_HERMILIO_VALDIZAN"></option>
+    <option value="UNIVERSIDAD_NACIONAL_DE_SAN_ANTONIO_ABAD_DEL_CUSCO"></option>
+    <option value="UNIVERSIDAD_NACIONAL_DE_TRUJILLO"></option>
+    <option value="UNIVERSIDAD_PERUANA_CAYETANO_HEREDIA"></option>
+    <option value="CORNELL_UNIVERSITY"></option>
+    <option value="UNIVERSITY_OF_CAMBRIDGE"></option>
+    <option value="UNIVERSITY_OF_MELBOURNE"></option>
+    <option value="UNIVERSITY_OF_SYDNEY"></option>
+    <option value="UNIVERSITY_OF_GLASGOW"></option>
+    <option value="UNIVERSITY_OF_EDINBURGH"></option>
+    <option value="UNIVERSITY_OF_CALIFORNIA_DAVIS"></option>
+    <option value="UNIVERSITY_OF_PRETORIA"></option>
+    <option value="UNIVERSITY_OF_GUELPH"></option>
 </datalist>
 <body id="Cuerpo">
     <section id="Fondo">
         <img src="./assets/Logo.png" alt="logo-Petwellness">
         <h1>Crea una cuenta</h1>
         <app-barra-usuario (click)="CambiarImagen()"></app-barra-usuario>
-        <form action="/">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" action="/">
             <section>
                 <h3>Nombres</h3>
-                <input type="text" name="Nombre" required>
+                <input type="text" name="Nombre" formControlName="nombre" required>
             </section>
             <section>
                 <h3>Apellidos</h3>
-                <input type="text" name="Apellido" required>
+                <input type="text" name="Apellido" formControlName="apellido" required>
             </section>
             <section>
                 <h3>Email</h3>
-                <input id="Email" type="email" name="Email" (click)="VerEmail=false" required>
+                <input id="Email" type="email" name="Email" formControlName="email" (click)="VerEmail=false" required>
                 <small *ngIf="VerEmail"><br>No tiene el formato.</small>
             </section>
             <section>
                 <h3>Teléfono</h3>
-                <input id="Telefono" type="tel" name="Telefono" (click)="VerTelefono=false" required>
+                <input id="Telefono" type="tel" name="Telefono" formControlName="telefono" (click)="VerTelefono=false" required>
                 <small *ngIf="VerTelefono"><br>No tiene el formato.</small>
             </section>
             <section *ngIf="Mostrar()=='Albergues'">
