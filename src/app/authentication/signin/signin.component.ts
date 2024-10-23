@@ -1,20 +1,60 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+import { BarraUsuarioComponent } from '../barra-usuario/barra-usuario.component';
 
 @Component({
   selector: 'app-signin',
+  standalone: true,
+  imports: [BarraUsuarioComponent, CommonModule, FormsModule, ReactiveFormsModule, MatInputModule, MatCardModule, MatSnackBarModule, MatButtonModule, RouterLink],
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.css'
 })
 export class SigninComponent implements OnInit, AfterViewInit {
-  
+
+  registerForm: FormGroup;
+
+  private fb = inject(FormBuilder);
+  private router = inject(Router);
+  private snackBar = inject(MatSnackBar);
+
   UsuarioActivo = '';
   VerTelefono = false;
   VerEmail = false;
   VerContrasena = false;
   VerContrasenaDiferente = false;
 
-  constructor(private UsuarioService: UsuarioService) {}
+  constructor(private UsuarioService: UsuarioService) {
+    this.registerForm = this.fb.group({
+      nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
+      email: ['', Validators.required],
+      shippingAddress: ['', Validators.required],
+      telefono: ['', Validators.required]
+    });
+  }
+
+  controlHasError(controlName: string, errorName: string): boolean {
+    return this.registerForm.controls[controlName].hasError(errorName);
+  }
+
+  onSubmit(){
+    if(this.registerForm.valid){
+      const userData = this.registerForm.value;
+    }
+  }
+
+  private showSnackBar(message: string): void {
+    this.snackBar.open(message, "Cerrar", {
+      duration: 3000
+    });
+  }
 
   ngOnInit(): void {
     this.UsuarioService.UsuarioActivo.subscribe(Usuario =>{
@@ -114,7 +154,7 @@ export class SigninComponent implements OnInit, AfterViewInit {
       }
       return false;
     }
-
+    this.router.navigate(['/authentication/login']);
     return true;
   }
 }
