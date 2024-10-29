@@ -36,8 +36,9 @@ export class SigninComponent implements OnInit, AfterViewInit {
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
       email: ['', Validators.required],
-      shippingAddress: ['Direccion'],
-      telefono: ['', Validators.required]
+      contrasena: ['', Validators.required],
+      telefono: ['', Validators.required],
+      shippingAddress: ['Direccion']
     });
   }
 
@@ -51,7 +52,7 @@ export class SigninComponent implements OnInit, AfterViewInit {
       this.authService.register_customer(userData).subscribe({
         next: () => {
           this.showSnackBar('Usuario creado correctamente');
-          this.router.navigate(['/auth/login']);
+          //this.router.navigate(['/authentication/login']);
         },
         error: (error) => {
           this.showSnackBar(error.error.message);
@@ -164,18 +165,7 @@ export class SigninComponent implements OnInit, AfterViewInit {
       }
       return false;
     }
-    const userData = this.registerForm.value;
-    this.authService.register_customer(userData).subscribe({
-      next: () => {
-        this.showSnackBar('Usuario creado correctamente');
-        this.router.navigate(['/auth/login']);
-      },
-      error: (error) => {
-        this.showSnackBar(error.error.message);
-      }
-    });
-    console.log(userData);
-    //this.router.navigate(['/authentication/login']);
+    this.router.navigate(['/authentication/login']);
     return true;
   }
 }

@@ -3,14 +3,14 @@
         <img src="./assets/Logo.png" alt="logo-Petwellness">
         <h1>Accede a tu cuenta</h1>
         <app-barra-usuario (click)="CambiarImagen()"></app-barra-usuario>
-        <form action="/">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <section>
                 <h3>Email</h3>
-                <input type="email" name="Email" required>
+                <input type="email" name="Email" formControlName="email" required>
             </section>
             <section class="Contra">
                 <h3>Contraseña</h3>
-                <input id="Ver-contrasena" type="password" name="Contrasena" required>
+                <input id="Ver-contrasena" type="password" formControlName="password" name="Contrasena" required>
                 <img id="Ojo" (click)="OcultarContrasena()" class="Ver-contrasena" src="./assets/ojo.png" alt="Ojo de vista de contraseña">
             </section>
             <button class="Acceder">Acceder</button>

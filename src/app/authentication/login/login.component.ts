@@ -1,16 +1,64 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
+import { BarraUsuarioComponent } from '../barra-usuario/barra-usuario.component';
+import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
+  imports: [BarraUsuarioComponent, CommonModule, FormsModule, ReactiveFormsModule, MatInputModule, MatCardModule, MatSnackBarModule, MatButtonModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit, AfterViewInit {
 
   UsuarioActivo = '';
+  private fb = inject(FormBuilder);
+  private router = inject(Router);
+  private snackBar = inject(MatSnackBar);
+  private authService = inject(AuthService);
+  loginForm: FormGroup;
 
-  constructor(private UsuarioService: UsuarioService) {}
+  constructor(private UsuarioService: UsuarioService) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    })
+  }
+
+  onSubmit(){
+    if(this.loginForm.valid){
+      const userData = this.loginForm.value;
+      this.authService.login(userData).subscribe({
+        next: () => {
+          console.log('Usuario iniciado correctamente');
+          this.showSnackBar('Usuario iniciado correctamente');
+          //this.router.navigate(['/authentication/login']);
+        },
+        error: (error) => {
+          console.log('Usuario no iniciado correctamente');
+          this.showSnackBar(error.error.message);
+        }
+      });
+    }
+  }
+  
+  private showSnackBar(message: string): void {
+    this.snackBar.open(message, "Cerrar", {
+      duration: 3000
+    });
+  }
+
+  controlHasError(controlName: string, errorName: string): boolean {
+    return this.loginForm.controls[controlName].hasError(errorName);
+  }
 
   ngOnInit(): void {
     this.UsuarioService.UsuarioActivo.subscribe(Usuario =>{
