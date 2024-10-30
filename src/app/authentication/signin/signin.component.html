@@ -38,7 +38,7 @@
         <img src="./assets/Logo.png" alt="logo-Petwellness">
         <h1>Crea una cuenta</h1>
         <app-barra-usuario (click)="CambiarImagen()"></app-barra-usuario>
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" action="/">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <section>
                 <h3>Nombres</h3>
                 <input type="text" name="Nombre" formControlName="nombre" required>
@@ -75,7 +75,7 @@
             </section>
             <section class="Contra">
                 <h3>Contraseña</h3>
-                <input id="Ver-contrasena_1" type="password" name="Contrasena" (click)="VerContrasena=false" (click)="VerContrasenaDiferente=false" required>
+                <input id="Ver-contrasena_1" type="password" formControlName="contrasena" name="Contrasena" (click)="VerContrasena=false" (click)="VerContrasenaDiferente=false" required>
                 <img (click)="OcultarContrasena()" class="Ver-contrasena" src="./assets/ojo.png" alt="Ojo de vista de contraseña">
                 <small *ngIf="VerContrasena"><br>Debe tener "aA0".</small>
                 <small *ngIf="VerContrasenaDiferente"><br>Las contraseñas son diferentes.</small>

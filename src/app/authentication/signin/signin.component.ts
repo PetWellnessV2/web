@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -23,7 +24,7 @@ export class SigninComponent implements OnInit, AfterViewInit {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private snackBar = inject(MatSnackBar);
-
+  private authService = inject(AuthService);
   UsuarioActivo = '';
   VerTelefono = false;
   VerEmail = false;
@@ -35,8 +36,9 @@ export class SigninComponent implements OnInit, AfterViewInit {
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
       email: ['', Validators.required],
-      shippingAddress: ['', Validators.required],
-      telefono: ['', Validators.required]
+      contrasena: ['', Validators.required],
+      telefono: ['', Validators.required],
+      shippingAddress: ['Direccion']
     });
   }
 
@@ -47,6 +49,15 @@ export class SigninComponent implements OnInit, AfterViewInit {
   onSubmit(){
     if(this.registerForm.valid){
       const userData = this.registerForm.value;
+      this.authService.register_customer(userData).subscribe({
+        next: () => {
+          this.showSnackBar('Usuario creado correctamente');
+          //this.router.navigate(['/authentication/login']);
+        },
+        error: (error) => {
+          this.showSnackBar(error.error.message);
+        }
+      });
     }
   }
 
