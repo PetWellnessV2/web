@@ -14,7 +14,6 @@ import { CambiarContrasenaComponent } from './cambiar-contrasena/cambiar-contras
 @NgModule({
   declarations: [
     AuthenticationComponent,
-    LoginComponent,
     VerificacionComponent,
     CodigoComponent,
     CambiarContrasenaComponent
@@ -23,7 +22,8 @@ import { CambiarContrasenaComponent } from './cambiar-contrasena/cambiar-contras
     CommonModule,
     AuthenticationRoutingModule,
     SigninComponent,
-    BarraUsuarioComponent
+    BarraUsuarioComponent,
+    LoginComponent
   ]
 })
 export class AuthenticationModule { }

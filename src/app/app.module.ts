@@ -14,6 +14,8 @@ import { HistorialModule } from './historial/historial.module';
 import { MeetingModule } from './meeting/meeting.module';
 import { ConsultsModule } from './consults/consults.module';
 import { RegistrarMascotaModule } from './registrar-mascota/registrar-mascota.module';
+import { provideHttpClient } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { RegistrarMascotaModule } from './registrar-mascota/registrar-mascota.mo
     PreparacionConsultaComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     AuthenticationModule,
@@ -34,7 +37,7 @@ import { RegistrarMascotaModule } from './registrar-mascota/registrar-mascota.mo
     MeetingModule,
     ConsultsModule
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
