@@ -1,42 +1,93 @@
-.section{
-    margin: 20px; 
-    background-color: #FAFAFA;
-    border-radius: 12px;
-    width: 795px;
-    height: 312px;
-    box-shadow: 4px 4px 20px 0 rgba(0, 0, 0, 0.1);
-}
-
-.container{
+.tareas-de-hoy .header {
     display: flex;
-    flex-wrap: wrap;
-    padding: 20px;
-}
-
-.tittle{
-    display: flex;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    color: #003049;
-    font-size: 22px;
-}
-
-.container-amount{
-    display: flex;
-    flex-grow: 1;
-    justify-content: flex-end;
-    border-radius: 12px;
-}
-
-.amount{
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    border-radius: 12px;
+  }
+  
+  .tareas-de-hoy h2 {
+    margin: 0;
+    color: #003049;
+  }
+  
+  .task-count {
+    background: #54AFB2;
+    color: #fff;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  
+  .tareas-de-hoy ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+  }
+  
+  .tareas-de-hoy ul li {
+    margin-bottom: 10px;
+  }
+  
+  .task-container {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
     background-color: #54AFB2;
-    width: 50px;
-    height: 31px;
-    font-size: 20.48px;
-    color: #FAFAFA;
-}
+    border-radius: 8px;
+    margin-right: 10px;
+  }
+  
+  .icon img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .task-details {
+    flex-grow: 1;
+  }
+  
+  .task-details p {
+    margin: 0;
+    font-size: 16px;
+    color: #003049;
+    font-weight: 600;
+  }
+  
+  .task-details time {
+    font-size: 12px;
+    color: #726C6C;
+  }
+  
+  .external-link {
+    font-size: 16px;
+    color: #003049;
+    cursor: pointer;
+  }
+  
+  .ver-mas-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px; 
+  }
+  
+  .ver-mas {
+    background: none;
+    border: none;
+    color: #003049;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .ver-mas:hover {
+    text-decoration: underline;
+  }

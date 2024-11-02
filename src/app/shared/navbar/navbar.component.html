@@ -1,19 +1,30 @@
-<header class="navbar">
-    <div class="navbar-logo">
-        <img src="/assets/Logo.png" alt="logo">
+<nav class="navbar">
+    <div class="navbar-brand">
+      <img src="assets/Logo.png" alt="PetWellness Logo">
     </div>
-    <nav class="navbar-nav">
-        <div class="container-nav">
-            <div class="label" routerLink="" (click)="setActiveLabel('Inicio')" [ngClass]="{'active': activeLabel === 'Inicio'}">Inicio</div>
-            <div class="label" routerLink="" (click)="setActiveLabel('Consultas')" [ngClass]="{'active': activeLabel === 'Consultas'}">Consultas</div>
-            <div class="label" routerLink="" (click)="setActiveLabel('Mascotas')" [ngClass]="{'active': activeLabel === 'Mascotas'}">Mascotas</div>
-        </div>
-        <div class="container-option">
-            <div class="option"><img src="/assets/carrito-compras.png" alt="carrito de compras"></div>
-            <div class="option"><img src="/assets/notificacion.png" alt="notificacion"></div>
-        </div>
-    </nav>
-    <div class="navbar-user">
-        <img src="/assets/Dueno.png" alt="dueño">
+    <ul class="navbar-links">
+      <li *ngIf="userRole === 'veterinario'"><a routerLink="/homevet" routerLinkActive="active">Inicio</a></li>
+      <li *ngIf="userRole === 'duenio'"><a routerLink="/homeduenio" routerLinkActive="active">Inicio</a></li>
+      <li *ngIf="userRole === 'veterinario'"><a routerLink="/consultas" routerLinkActive="active">Consultas</a></li>
+      <li *ngIf="userRole === 'duenio'"><a routerLink="/consultas-duenio" routerLinkActive="active">Consultas</a></li>
+      <li *ngIf="userRole === 'veterinario'"><a routerLink="/mascotas" routerLinkActive="active">Mascotas</a></li>
+      <li *ngIf="userRole === 'duenio'"><a routerLink="/mascotas" routerLinkActive="active">Mascotas</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <div class="search-container">
+        <!---<button class="search-button"><mat-icon aria-hidden="false" fontIcon="search"></mat-icon></button>--->
+        <input type="text" class="search-input" placeholder="Buscar...">
+      </div>
+      <div *ngIf="showCartIcon" class="shopping-cart-container">
+        <button class="shopping-cart-button" (click)="toggleCart()">
+          <!---<mat-icon aria-hidden="false" fontIcon="shopping_cart"></mat-icon>--->
+          <span class="notification-count" *ngIf="notificationCount > 0">{{ notificationCount }}</span>
+        </button>
+        <!--<app-view-to-car *ngIf="isCartVisible" class="shopping-cart-dropdown" (closeCart)="toggleCart()" (productCount)="updateNotificationCount($event)"></app-view-to-car>--->
+      </div>    
+      <!--<app-notification-navbar></app-notification-navbar>--->
+      <div class="user-profile">
+        <img routerLink="" routerLinkActive="active" src="assets/doct.png" alt="User Avatar">
+      </div>
     </div>
-</header>
+  </nav>

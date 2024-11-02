@@ -1,1 +1,114 @@
-<p>inicio-dueno works!</p>
+<div class="homeduenio">
+    <header>
+      <h1>Bienvenido <span>Jose y Chewbacca!</span></h1>
+    </header>
+    <main>
+      <div class="dashboard">
+        <section class="dashboard-item general-tareas">
+            <div class="tareas-de-hoy">
+                <app-tareas></app-tareas>           
+            </div>
+        </section>                
+        <!-- Mascotas Section -->
+        <div class="dashboard-item mascotas">
+            <app-animales></app-animales>
+        </div>         
+        <section class="dashboard-item calendar">
+          <div class="calendar-header">
+            <h2>Abril 2024 <span class="dropdown-icon">▼</span></h2>
+            <button class="add-reminder" (click)="openDialog()">+ Add recordatorio</button>
+          </div>
+          <div class="calendar">
+            <div class="calendar-header">
+              <span class="prev" (click)="prev()">&lt;</span>
+              <ul class="days">
+                <li *ngFor="let day of days">{{ day }}</li>
+              </ul>
+              <span class="next" (click)="next()">&gt;</span>
+            </div>
+            <div class="calendar-body">
+              <ul class="dates">
+                <li *ngFor="let date of dates; let i = index" [class.active]="i === activeIndex">
+                  {{ date }}
+                </li>
+              </ul>
+            </div>
+          </div>          
+          <ul class="appointments">
+            <li *ngFor="let appointment of appointments">
+              <div class="task-container">
+                <span class="icon"><img [src]="appointment.icon" alt="icon"></span>
+                <div class="task-details">
+                  <p>{{ appointment.name }}</p>
+                  <time>{{ appointment.time }}</time>
+                </div>
+              </div>
+            </li>
+          </ul>          
+        </section>        
+        <section class="dashboard-item proximo-paciente">
+          <div class="patient-header">
+            <h2>Próxima Consulta</h2>
+            <span routerLink="/antes-consulta" class="external-link"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAACXBIWXMAAAsTAAALEwEAmpwYAAABJElEQVR4nO2VvWoCQRSFv7G0ij9VniBEm6BYaB4gsTWFSAgY0Cpd8iqCgk8QSC8KAcuIRQi+h0lhlUJZOMIizuzuaBPigVNc5s79uMPevfDflQEega7FD0D6UEgbWEf43lWgArwBc4tvgBRQBEohl4FpCNKxAVrAL/CtC5Mdj4DqnnsG6Kv4xAXJq/gHkE3wdCYE6KtDK+ROh7cJAYMQIIgLLkhHhwUPwEAxx4QYoKf8oT4Ejgkxlg62utBZ2xdiIgCoq2BQz3whTxGAmubIqjiQS4H2AdAcfR0KidIYWLgSTpBEz7X9fV/hrynw6Uq4FuTZE5ADfoBXV1IwRO/ACnjRXinFdB2YaU0EsVPnAq09vASacds2ejrXDu/uuJFwB/1RbQAq/nUqTc80IgAAAABJRU5ErkJggg=="></span>
+          </div>
+          <div class="patient-info">
+            <img src="assets/work.png" alt="Paciente">
+            <div class="patient-details">
+              <h3>Dr. Jose </h3>
+              <p>29 años | <span>Surquillo, Perú</span></p>
+              <div class="patient-stats">
+                <div class="stat-item">
+                  <span>Fecha</span>
+                  <p>11 de abril del 2024</p>
+                </div>
+                <div class="stat-item">
+                  <span>Hora</span>
+                  <p>11:30 AM</p>
+                </div>
+              </div>              
+            </div>
+          </div>
+          <div class="patient-notes">
+            <ul class="tabs">
+              <li (click)="selectTab('resumen')" [class.active]="selectedTab === 'resumen'">Resumen</li>
+              <li (click)="selectTab('fotos')" [class.active]="selectedTab === 'fotos'">Fotos</li>
+              <li (click)="selectTab('notas')" [class.active]="selectedTab === 'notas'">Notas</li>
+            </ul>
+            <div class="content">
+              <!--<div *ngIf="selectedTab === 'resumen'">
+                <form class="example-form">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Ingresa algún detalle de la consulta a hacer ...</mat-label>
+                    <input matInput placeholder="" value="">
+                  </mat-form-field>
+                </form>
+              </div>
+              <div *ngIf="selectedTab === 'fotos'">
+                <form class="example-form">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Cargue imágenes ...</mat-label>
+                    <input matInput placeholder="" value="">
+                  </mat-form-field>
+                </form>
+              </div>
+              <div *ngIf="selectedTab === 'notas'">
+                <form class="example-form">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Ingresa alguna nota de la consulta a hacer ...</mat-label>
+                    <input matInput placeholder="" value="">
+                  </mat-form-field>
+                </form>
+              </div>
+              <div class="buttons">
+                <button *ngIf="selectedTab === 'resumen'">Enviar</button>
+                <button *ngIf="selectedTab === 'fotos'">Enviar</button>
+                <button class="subir" *ngIf="selectedTab === 'fotos'" (click)="triggerFileInput()">Subir</button>
+                <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none;">
+                <button *ngIf="selectedTab === 'notas'">Enviar</button>
+              </div>--->
+            </div>
+          </div>        
+        </section>
+      </div>
+    </main>
+  </div>

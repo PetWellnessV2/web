@@ -1,1 +1,19 @@
-<p>animales works!</p>
+<div>
+    <main>
+        <div class="dashboard">
+            <section class="dashboard-item mascotas">
+                <h2>Mascotas</h2>
+                <div class="mascotas-list">
+                  <div class="mascotas-card" *ngFor="let mascota of mascotasdueno">
+                    <img [src]="mascota.img" [alt]="mascota.nombre">
+                    <div class="appointment-details">
+                      <p>{{ mascota.nombre }}</p>
+                      <time>{{ mascota.fecha }} | {{ mascota.hora }}</time>
+                    </div>
+                    <button>Historial Clínico</button>
+                  </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>

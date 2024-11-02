@@ -16,6 +16,7 @@ import { ConsultsModule } from './consults/consults.module';
 import { RegistrarMascotaModule } from './registrar-mascota/registrar-mascota.module';
 import { provideHttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RegistrarMascotaModule,
     HistorialModule,
     MeetingModule,
-    ConsultsModule
+    ConsultsModule,
+    MatIconModule,
+    MatIcon
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]
