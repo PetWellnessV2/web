@@ -12,12 +12,12 @@
     </ul>
     <div class="navbar-actions">
       <div class="search-container">
-        <!---<button class="search-button"><mat-icon aria-hidden="false" fontIcon="search"></mat-icon></button>--->
+        <button class="search-button"><mat-icon aria-hidden="false" fontIcon="search"></mat-icon></button>
         <input type="text" class="search-input" placeholder="Buscar...">
       </div>
       <div *ngIf="showCartIcon" class="shopping-cart-container">
         <button class="shopping-cart-button" (click)="toggleCart()">
-          <!---<mat-icon aria-hidden="false" fontIcon="shopping_cart"></mat-icon>--->
+          <mat-icon aria-hidden="false" fontIcon="shopping_cart"></mat-icon>
           <span class="notification-count" *ngIf="notificationCount > 0">{{ notificationCount }}</span>
         </button>
         <!--<app-view-to-car *ngIf="isCartVisible" class="shopping-cart-dropdown" (closeCart)="toggleCart()" (productCount)="updateNotificationCount($event)"></app-view-to-car>--->
