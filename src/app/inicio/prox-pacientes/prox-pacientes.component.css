@@ -1,0 +1,190 @@
+.patient-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+.patient-header h2 {
+    margin: 0;
+    color: #003049;
+  }
+  
+  .external-link {
+    font-size: 16px;
+    color: #003049;
+    cursor: pointer;
+  }
+  
+  .patient-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-direction: column;
+  }
+  
+  .patient-info img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+  
+  .patient-details {
+    text-align: center;
+  }
+  .patient-details h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #003049;
+    font-weight: 700;
+  }
+  
+  .patient-details p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #003049;
+  }
+  
+  .patient-details span {
+    color: #003049;
+  }
+  
+  .patient-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .stat-item {
+    text-align: center;
+    flex: 1;
+  }
+  
+  .stat-item:not(:last-child) {
+    margin-right: 30px; 
+  }
+  
+  .patient-stats span {
+    display: block;
+    font-size: 12px;
+    color: #676D89;
+  }
+  
+  .patient-stats p {
+    margin: 0;
+    font-size: 14px;
+    color: #003049;
+    font-weight: 600;
+  }
+  
+  .patient-notes {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+  }
+  
+  .tabs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+  }
+  
+  .tabs li {
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+  }
+  
+  .tabs .active {
+    color: #003049;
+    font-weight: 600;
+    border-bottom: 2px solid #54AFB2;
+  }
+  
+  .patient-notes p {
+      font-size: 14px;
+      color: #003049;
+      margin-top: 10px;
+  }
+  
+  .buttons {
+    display: flex;
+    align-items: center; 
+  }
+  
+  .buttons .subir {
+    margin-left: auto; 
+    background-color: #54AFB2;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .patient-notes button {
+      background-color: #54AFB2;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 10px;
+  }
+  
+  .patient-notes button:hover {
+      background-color: #003049;
+  }
+   
+  @media (max-width: 1024px) {
+    .dashboard {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  .example-form mat-form-field {
+    display: block;
+    margin-bottom: 0;
+    margin: 0;
+  }
+  .example-form mat-form-field .mat-form-field-wrapper {
+    padding: 0;
+  }
+  .example-form mat-form-field .mat-form-field-infix {
+    padding: 0;
+  }
+  .example-form .mat-hint {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: #fff;
+  }
+  .example-form button {
+    margin-top: 12px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #54AFB2;
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .example-form button:hover {
+    background-color: #54AFB2;
+  }
+  .tab-content p {
+    margin: 0 0 12px;
+    font-size: 1rem;
+    color: #424242;
+  }

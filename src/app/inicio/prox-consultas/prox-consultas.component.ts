@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrl: './prox-consultas.component.css'
 })
 export class ProxConsultasComponent {
+  selectedTab: string = 'resumen';
+
+  selectTab(tab: string) {
+    this.selectedTab = tab;
+  }
 
 }

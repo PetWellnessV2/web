@@ -9,7 +9,7 @@
                 <app-tareas></app-tareas>           
             </div>
         </section>                
-        <!-- Mascotas Section -->
+        <!-- Mascotas -->
         <div class="dashboard-item mascotas">
             <app-animales></app-animales>
         </div>         
@@ -45,51 +45,11 @@
               </div>
             </li>
           </ul>          
-        </section>        
+        </section>  
+        <!-- Proximos Pacientes -->      
         <section class="dashboard-item proximo-paciente">
-            <div class="patient-header">
-                <h2>Próximo Paciente</h2>
-                <span routerLink="/consultas" class="external-link"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAACXBIWXMAAAsTAAALEwEAmpwYAAABJElEQVR4nO2VvWoCQRSFv7G0ij9VniBEm6BYaB4gsTWFSAgY0Cpd8iqCgk8QSC8KAcuIRQi+h0lhlUJZOMIizuzuaBPigVNc5s79uMPevfDflQEega7FD0D6UEgbWEf43lWgArwBc4tvgBRQBEohl4FpCNKxAVrAL/CtC5Mdj4DqnnsG6Kv4xAXJq/gHkE3wdCYE6KtDK+ROh7cJAYMQIIgLLkhHhwUPwEAxx4QYoKf8oT4Ejgkxlg62utBZ2xdiIgCoq2BQz3whTxGAmubIqjiQS4H2AdAcfR0KidIYWLgSTpBEz7X9fV/hrynw6Uq4FuTZE5ADfoBXV1IwRO/ACnjRXinFdB2YaU0EsVPnAq09vASacds2ejrXDu/uuJFwB/1RbQAq/nUqTc80IgAAAABJRU5ErkJggg=="></span>
-              </div>
-              <div class="patient-info">
-                <img src="assets/george.png" alt="Paciente">
-                <div class="patient-details">
-                  <h3>George</h3>
-                  <p>Papá: Jose Fernando</p>
-                  <p>4 años | <span>San Borja, Perú</span></p>
-                  <div class="patient-stats">
-                    <div>
-                      <span>Sangre</span>
-                      <p>0+</p>
-                    </div>
-                    <div>
-                      <span>Altura</span>
-                      <p>31cm</p>
-                    </div>
-                    <div>
-                      <span>Peso</span>
-                      <p>13kg</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="patient-notes">
-                <ul class="tabs">
-                  <li (click)="selectTab('resumen')" [class.active]="selectedTab === 'resumen'">Resumen</li>
-                  <li (click)="selectTab('condicion')" [class.active]="selectedTab === 'condicion'">Condición</li>
-                  <li (click)="selectTab('notas')" [class.active]="selectedTab === 'notas'">Notas</li>
-                </ul>
-                <p *ngIf="selectedTab === 'resumen'">
-                  George es un Corgi Galés de 4 años de edad, macho tiene alergia en las almohadillas, presenta un soplo mínimo por lo que requiere un ecocardiograma.
-                </p>
-                <p *ngIf="selectedTab === 'condicion'">
-                  George tiene una condición estable, pero necesita chequeos regulares debido a su soplo cardíaco.
-                </p>
-                <p *ngIf="selectedTab === 'notas'">
-                  La próxima cita de George es el 15 de julio para realizar el ecocardiograma.
-                </p>
-              </div>         
-          </section>
+          <app-prox-pacientes></app-prox-pacientes>           
+        </section>
       </div>
     </main>
 </div>
