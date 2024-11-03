@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RecordatoriosComponent } from '../recordatorios/recordatorios.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio-dueno',
@@ -19,7 +20,7 @@ export class InicioDuenoComponent {
   ];
   @ViewChild('fileInput') fileInput!: ElementRef;
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private router: Router) {
     this.initializeCalendar();
   }
 
@@ -93,15 +94,8 @@ export class InicioDuenoComponent {
   ];
 
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(RecordatoriosComponent, {
-      width: '300px',
-      data: {}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+  goToAddReminder() {
+    this.router.navigate(['/add-reminder']);
   }  
 
   
