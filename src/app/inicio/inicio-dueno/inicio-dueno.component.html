@@ -12,28 +12,33 @@
         <!-- Mascotas -->
         <section class="dashboard-item mascotas">
             <app-animales></app-animales>
-        </section>         
+        </section>   
+        <!-- Recordatorios -->      
         <section class="dashboard-item calendar">
           <div class="calendar-header">
-            <h2>Abril 2024 <span class="dropdown-icon">▼</span></h2>
-            <button class="add-reminder" (click)="openDialog()">+ Add recordatorio</button>
-          </div>
-          <div class="calendar">
-            <div class="calendar-header">
-              <span class="prev" (click)="prev()">&lt;</span>
-              <ul class="days">
-                <li *ngFor="let day of days">{{ day }}</li>
-              </ul>
-              <span class="next" (click)="next()">&gt;</span>
-            </div>
-            <div class="calendar-body">
-              <ul class="dates">
-                <li *ngFor="let date of dates; let i = index" [class.active]="i === activeIndex">
-                  {{ date }}
+            <h2>{{ currentMonth }} {{ currentYear }} <span class="dropdown-icon">▼</span></h2>
+            <div *ngIf="showMonthDropdown" class="month-dropdown">
+              <ul>
+                <li *ngFor="let month of months; let i = index" (click)="selectMonth(i)">
+                  {{ month }}
                 </li>
               </ul>
             </div>
-          </div>          
+            <button class="add-reminder" (click)="openDialog()">+ Add recordatorio</button>
+            
+          </div>     
+          <div class="calendar-navigation">
+            <span class="prev" (click)="prev()">&lt;</span>
+            <div class="dates-container">
+              <ul class="dates">
+                <li *ngFor="let item of daysAndDates; let i = index" [class.active]="i === activeIndex">
+                  <span class="day">{{ item.day }}</span>
+                  <span class="date">{{ item.date }}</span>
+                </li>
+              </ul>
+            </div>
+            <span class="next" (click)="next()">&gt;</span>
+          </div>                                       
           <ul class="appointments">
             <li *ngFor="let appointment of appointments">
               <div class="task-container">
@@ -42,10 +47,11 @@
                   <p>{{ appointment.name }}</p>
                   <time>{{ appointment.time }}</time>
                 </div>
+                <button class="delete-btn">🗑️</button>
               </div>
             </li>
-          </ul>          
-        </section> 
+          </ul>
+        </section>
         <!-- Proximas Consultas -->       
         <section class="dashboard-item proximo-paciente">
           <app-prox-consultas></app-prox-consultas>        

@@ -8,44 +8,81 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrl: './inicio-dueno.component.css'
 })
 export class InicioDuenoComponent {
-  days: string[] = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
-  dates: number[] = [9, 10, 11, 12, 13, 14];
-  activeIndex: number = 2;
-  selectedTab: string = 'resumen';
+  daysAndDates: { day: string; date: number }[] = [];
+  activeIndex: number = 0;
+  currentMonth: string = '';
+  currentYear: number = 0;
+  showMonthDropdown: boolean = false; // To show/hide the month dropdown
+  months: string[] = [
+    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+  ];
   @ViewChild('fileInput') fileInput!: ElementRef;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) {
+    this.initializeCalendar();
+  }
+
+  initializeCalendar(month: number = new Date().getMonth(), year: number = new Date().getFullYear()): void {
+    const today = new Date();
+    const startOfWeek = this.getStartOfWeek(today); // Calculate Monday of the current week
+
+    this.currentMonth = today.toLocaleString('default', { month: 'long' });
+    this.currentYear = today.getFullYear();
+
+    // Generate the current week's days and dates
+    this.daysAndDates = this.generateWeek(startOfWeek);
+  }
+
+  // Toggle the visibility of the month dropdown
+  toggleDropdown(): void {
+    this.showMonthDropdown = !this.showMonthDropdown;
+  }
+
+  // Select a month from the dropdown and update the calendar
+  selectMonth(monthIndex: number): void {
+    this.showMonthDropdown = false; // Hide dropdown
+    this.initializeCalendar(monthIndex, this.currentYear); // Update calendar for the selected month
+  }
+
+  // Helper method to calculate the Monday of the given week
+  private getStartOfWeek(date: Date): Date {
+    const dayOfWeek = (date.getDay() + 6) % 7;
+    const startOfWeek = new Date(date);
+    startOfWeek.setDate(date.getDate() - dayOfWeek);
+    return startOfWeek;
+  }
+
+  // Helper method to generate a week's days and dates starting from a specific date
+  private generateWeek(startDate: Date): { day: string; date: number }[] {
+    const daysOfWeek = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
+    return Array.from({ length: 7 }, (_, i) => {
+      const date = new Date(startDate);
+      date.setDate(startDate.getDate() + i);
+      return {
+        day: daysOfWeek[i],
+        date: date.getDate(),
+      };
+    });
+  }
+
+  // Shift the displayed week by a specified offset in weeks
+  private shiftWeek(offset: number): void {
+    const currentStartDate = this.getStartOfWeek(new Date(this.currentYear, this.months.indexOf(this.currentMonth), this.daysAndDates[0].date));
+    const newStartDate = new Date(currentStartDate);
+    newStartDate.setDate(currentStartDate.getDate() + offset * 7);
+
+    this.daysAndDates = this.generateWeek(newStartDate);
+    this.currentMonth = newStartDate.toLocaleString('default', { month: 'long' });
+    this.currentYear = newStartDate.getFullYear();
+  }
 
   prev(): void {
-    if (this.activeIndex > 0) {
-      this.activeIndex--;
-    } else {
-      this.activeIndex = this.dates.length - 1;
-    }
+    this.shiftWeek(-1);
   }
 
   next(): void {
-    if (this.activeIndex < this.dates.length - 1) {
-      this.activeIndex++;
-    } else {
-      this.activeIndex = 0;
-    }
-  }
-
-  selectTab(tab: string) {
-    this.selectedTab = tab;
-  }
-
-  triggerFileInput() {
-    this.fileInput.nativeElement.click();
-  }
-
-  onFileSelected(event: Event) {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length > 0) {
-      const file = input.files[0];
-      console.log('Selected file:', file);
-    }
+    this.shiftWeek(1);
   }
 
   appointments = [
