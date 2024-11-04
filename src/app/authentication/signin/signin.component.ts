@@ -52,7 +52,7 @@ export class SigninComponent implements OnInit, AfterViewInit {
       this.authService.register_customer(userData).subscribe({
         next: () => {
           this.showSnackBar('Usuario creado correctamente');
-          //this.router.navigate(['/authentication/login']);
+          this.router.navigate(['/authentication/login']);
         },
         error: (error) => {
           this.showSnackBar(error.error.message);
@@ -165,7 +165,7 @@ export class SigninComponent implements OnInit, AfterViewInit {
       }
       return false;
     }
-    this.router.navigate(['/authentication/login']);
+    //this.router.navigate(['/authentication/login']);
     return true;
   }
 }
