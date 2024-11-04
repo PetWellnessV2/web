@@ -6,6 +6,7 @@ import { ConsultsComponent } from './consults.component';
 import { VeterinarioComponent } from './veterinario/veterinario.component';
 import { DuenoComponent } from './dueno/dueno.component';
 import { ConsultasComponent } from './consultas/consultas.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ConsultasComponent } from './consultas/consultas.component';
   ],
   imports: [
     CommonModule,
-    ConsultsRoutingModule
+    ConsultsRoutingModule,
+    FormsModule
   ]
 })
 export class ConsultsModule { }
