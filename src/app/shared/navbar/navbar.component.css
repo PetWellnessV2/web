@@ -63,6 +63,10 @@ body{
   margin-left: 30px;
 }
 
+img:hover {
+ cursor: pointer;
+}
+
 .option{
   margin: 0px 5px 0px 5px;
   position: relative;
