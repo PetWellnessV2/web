@@ -1,0 +1,57 @@
+#Cuerpo {
+    zoom: 100%; 
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+#Fondo {
+    margin: 25px 0;
+    box-sizing: border-box;
+    width: 95%;
+    height: 939px;
+    border-radius: 25px;
+    background: #FFF;
+    align-items: center;
+}
+
+.titulo {
+    justify-content: center;
+    margin: 2% 5%;
+    display: flex;
+    align-items: center;
+}
+
+.consultas {
+    margin: 0 3%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+
+.consulta {
+    box-sizing: border-box;
+    width: 350px;
+    height: auto;
+    border-radius: 15px;
+    padding: 16px;
+    background: #93e9ec;
+    color: #003049;
+    font-family: "Open Sans";
+    font-size: 14px;
+    line-height: 21px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+h1 {
+    color: #003049;
+    font-family: "Open Sans";
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -0.8px;
+}
+

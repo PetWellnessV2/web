@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthenticationModule } from './authentication/authentication.module';
@@ -17,6 +17,7 @@ import { RegistrarMascotaModule } from './registrar-mascota/registrar-mascota.mo
 import { provideHttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
     PreparacionConsultaComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
@@ -38,7 +40,8 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
     MeetingModule,
     ConsultsModule,
     MatIconModule,
-    MatIcon
+    MatIcon,
+    FormsModule
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]
