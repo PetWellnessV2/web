@@ -33,15 +33,22 @@ export class LoginComponent implements OnInit, AfterViewInit {
     })
   }
 
+  onLogin() {
+    // Realizar aquí la lógica de autenticación (validar credenciales)
+    this.authService.login_();  // Cambia el estado a autenticado
+    console.log("Usuario autenticado"); // Redirigir al usuario a la página de inicio
+  }
+
   onSubmit(){
     if(this.loginForm.valid){
       const userData = this.loginForm.value;
       this.authService.login(userData).subscribe({
         next: () => {
+          this.onLogin();
           alert('Usuario iniciado correctamente');
           console.log('Usuario iniciado correctamente');
           this.showSnackBar('Usuario iniciado correctamente');
-          //this.router.navigate(['/authentication/login']);
+          this.router.navigate(['/consults/consultas-duenio']);
         },
         error: (error) => {
           alert('El correo o la contraseña son incorrectos');

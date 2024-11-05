@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { StorageService } from './storage.service';
 import { AuthRequest } from '../models/auth-request.model';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { AuthResponse } from '../models/auth-response.model';
 import { RegisterResponse } from '../models/register-response.model';
 import { RegisterRequestVet } from '../models/register-vet-request.model';
@@ -13,17 +13,28 @@ import { RegisterRequestVet } from '../models/register-vet-request.model';
   providedIn: 'root'
 })
 export class AuthService {
-
+  private loggedIn = new BehaviorSubject<boolean>(false);
   private baseURL = `${environment.baseURL}/auth`;
   private http = inject(HttpClient);
   private storageService = inject(StorageService);
   constructor() { }
+
+  isLoggedIn = this.loggedIn.asObservable();
 
   login(authRequest: AuthRequest): Observable<AuthResponse>{
     return this.http.post<AuthResponse>(`${this.baseURL}/login`, authRequest).pipe(
       tap(
         response => this.storageService.sethAuthData(response))
     );
+  }
+
+  login_() {
+    this.loggedIn.next(true);
+  }
+
+  logout_() {
+    this.loggedIn.next(false);
+    localStorage.removeItem('authToken');
   }
 
   register_customer(registerRequest: RegisterRequest): Observable<RegisterResponse>{
