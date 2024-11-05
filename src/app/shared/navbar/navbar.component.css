@@ -1,4 +1,18 @@
-.navbar {
+body{
+  margin: 0;
+}
+
+.navbar-logo {
+  width: 50px;
+}
+
+.navbar-logo img{
+  background-color: #FAFAFA;
+  cursor: pointer;
+  height: 75px;
+}
+
+.navbar{
   display: flex;
   justify-content: space-between;
   align-items: center;

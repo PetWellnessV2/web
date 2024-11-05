@@ -17,4 +17,8 @@ import { AuthResponse } from "../models/auth-response.model";
     clearAuthData(): void {
       localStorage.removeItem(this.authKey);
     }
+    getAuthToken(): string | null {
+      const authData = this.getAuthData();
+      return authData ? authData.token : null;
+  }
   }
