@@ -20,7 +20,7 @@ import { BarraUsuarioComponent } from '../barra-usuario/barra-usuario.component'
 export class SigninComponent implements OnInit, AfterViewInit {
 
   registerForm: FormGroup;
-
+  registerFormVet: FormGroup;
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private snackBar = inject(MatSnackBar);
@@ -40,6 +40,17 @@ export class SigninComponent implements OnInit, AfterViewInit {
       telefono: ['', Validators.required],
       shippingAddress: ['Direccion']
     });
+
+    this.registerFormVet = this.fb.group({
+      nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
+      email: ['', Validators.required],
+      contrasena: ['', Validators.required],
+      telefono: ['', Validators.required],
+      shippingAddress: ['Direccion'],
+      institucionEducativa: ['', Validators.required],
+      especialidad: ['', Validators.required]
+    });
   }
 
   controlHasError(controlName: string, errorName: string): boolean {
@@ -51,10 +62,25 @@ export class SigninComponent implements OnInit, AfterViewInit {
       const userData = this.registerForm.value;
       this.authService.register_customer(userData).subscribe({
         next: () => {
+          alert('Usuario registrado correctamente');
           this.showSnackBar('Usuario creado correctamente');
           this.router.navigate(['/authentication/login']);
         },
         error: (error) => {
+          alert('No se pudo registrar el usuario correctamente');
+          this.showSnackBar(error.error.message);
+        }
+      });
+    } else if (this.registerFormVet.valid) {
+      const userData = this.registerFormVet.value;
+      this.authService.register_vet(userData).subscribe({
+        next: () => {
+          alert('Usuario registrado correctamente');
+          this.showSnackBar('Usuario creado correctamente');
+          this.router.navigate(['/authentication/login']);
+        },
+        error: (error) => {
+          alert('No se pudo registrar el usuario correctamente');
           this.showSnackBar(error.error.message);
         }
       });

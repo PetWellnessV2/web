@@ -38,11 +38,13 @@ export class LoginComponent implements OnInit, AfterViewInit {
       const userData = this.loginForm.value;
       this.authService.login(userData).subscribe({
         next: () => {
+          alert('Usuario iniciado correctamente');
           console.log('Usuario iniciado correctamente');
           this.showSnackBar('Usuario iniciado correctamente');
           //this.router.navigate(['/authentication/login']);
         },
         error: (error) => {
+          alert('El correo o la contraseña son incorrectos');
           console.log('Usuario no iniciado correctamente');
           this.showSnackBar(error.error.message);
         }
