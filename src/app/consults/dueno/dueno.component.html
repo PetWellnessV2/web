@@ -3,6 +3,9 @@
         <div class="titulo">
             <h1>Consultas</h1>
         </div>
+        <button class="btn-reservar" routerLink="/consults/reservar-consulta">
+            Reservar consulta
+        </button>
         <div class="consultas">
             <div *ngFor="let consulta of consultas" class="consulta">
                 <h2>Nombre de la mascota: {{ consulta.nombre_mascota }}</h2>
@@ -11,7 +14,8 @@
                 <p>Fecha: {{ consulta.fecha }}</p>
                 <p>Hora: {{ consulta.hora }}</p>
                 <p>Razón de la consulta: {{ consulta.razonConsulta }}</p>
-                <button (click)="eliminarConsulta(consulta.idConsulta)">Eliminar</button>
+                <button class="btn-eliminar" (click)="eliminarConsulta(consulta.idConsulta)">Eliminar</button>
+                <button class="btn-consultas" routerLink="">Ingresar a la consulta</button>
             </div>
         </div>
     </section>

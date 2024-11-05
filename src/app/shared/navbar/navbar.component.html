@@ -1,4 +1,4 @@
-<header class="navbar">
+<header class="navbar" *ngIf="isLoggedIn">
     <div class="navbar-logo">
         <img src="/assets/Logo.png" alt="logo">
     </div>
@@ -14,6 +14,6 @@
         </div>
     </nav>
     <div class="navbar-user">
-        <img src="/assets/Dueno.png" alt="dueño">
+        <img src="/assets/Dueno.png" alt="dueño"  (click)="onLogout()">
     </div>
 </header>

@@ -53,7 +53,9 @@
                 </div>
             </div>
             <div class="horarios-lista">
-                <div *ngFor="let horario of horarios" class="horario" (click)="seleccionarHorario(horario.idHorario)" 
+                <div *ngFor="let horario of horarios" 
+                     class="horario" 
+                     (click)="seleccionarHorario(horario.idHorario)" 
                      [class.selected]="horario.idHorario === selectedHorarioId">
                     <span class="veterinario">{{ horario.veterinario_nombre }}</span>
                     <div class="hora-fecha">
@@ -61,7 +63,7 @@
                         <span class="fecha">{{ horario.fecha }}</span>
                     </div>
                 </div>
-            </div>            
+            </div>                       
         </div>
     </section>
 </body>
