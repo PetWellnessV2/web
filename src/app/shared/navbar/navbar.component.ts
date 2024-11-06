@@ -1,28 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { RoleService } from '../../services/role.service';
+import { UsuarioService } from '../../services/usuario.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   showCartIcon: boolean = false;
   isCartVisible: boolean = false;
   notificationCount: number = 0;
-  userRole: 'duenio' | 'veterinario';
 
-  constructor(private router: Router, private roleService: RoleService) {
-    this.userRole = this.roleService.getUserRole();
-  }
+  constructor(private router: Router, private usuarioService: UsuarioService) {}
+
+  userRole: string = ''; 
 
   ngOnInit() {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.showCartIcon = this.userRole === 'duenio' ;
-      }
+    this.usuarioService.UsuarioActivo.subscribe(role => {
+      this.userRole = role;
     });
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.isCartVisible = this.userRole === 'dueño' && event.url === '/inicio-dueno';
+      });
   }
 
   toggleCart() {

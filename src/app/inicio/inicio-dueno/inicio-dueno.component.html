@@ -16,21 +16,39 @@
         <!-- Recordatorios -->      
         <section class="dashboard-item calendar">
           <div class="calendar-header">
-            <h2>{{ currentMonth }} {{ currentYear }} <span class="dropdown-icon">▼</span></h2>
-            <div *ngIf="showMonthDropdown" class="month-dropdown">
-              <ul>
-                <li *ngFor="let month of months; let i = index" (click)="selectMonth(i)">
-                  {{ month }}
-                </li>
-              </ul>
+            <div class="month-year-selection">
+              <div (click)="toggleMonthDropdown()" class="dropdown">
+                <span>{{ currentMonth }}</span>
+                <span class="dropdown-icon">▼</span>
+                <div *ngIf="showMonthDropdown" class="month-dropdown">
+                  <ul>
+                    <li *ngFor="let month of months; let i = index" (click)="selectMonth(i)">
+                      {{ month }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div (click)="toggleYearDropdown()" class="dropdown">
+                <span>{{ currentYear }}</span>
+                <span class="dropdown-icon">▼</span>
+                <div *ngIf="showYearDropdown" class="year-dropdown">
+                  <ul>
+                    <li *ngFor="let year of years" (click)="selectYear(year)">
+                      {{ year }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
             <button class="add-reminder" (click)="goToAddReminder()">+ Add recordatorio</button>            
-          </div>     
+          </div>             
           <div class="calendar-navigation">
             <span class="prev" (click)="prev()">&lt;</span>
             <div class="dates-container">
               <ul class="dates">
-                <li *ngFor="let item of daysAndDates; let i = index" [class.active]="i === activeIndex">
+                <li *ngFor="let item of daysAndDates; let i = index"
+                    [class.active]="i === activeIndex"
+                    (click)="setActiveDay(i)">
                   <span class="day">{{ item.day }}</span>
                   <span class="date">{{ item.date }}</span>
                 </li>
@@ -39,14 +57,14 @@
             <span class="next" (click)="next()">&gt;</span>
           </div>                                       
           <ul class="appointments">
-            <li *ngFor="let appointment of appointments">
+            <li *ngFor="let recordatorio of recordatorios">
               <div class="task-container">
-                <span class="icon"><img [src]="appointment.icon" alt="icon"></span>
+                <span class="icon"><img [src]="recordatorio.icon" alt="icon"></span>
                 <div class="task-details">
-                  <p>{{ appointment.name }}</p>
-                  <time>{{ appointment.time }}</time>
+                  <p>{{ recordatorio.name }}</p>
+                  <time>{{ recordatorio.time }}</time>
                 </div>
-                <button class="delete-btn">🗑️</button>
+                <button class="delete-btn" (click)="deleteReminder(recordatorio)">🗑️</button>
               </div>
             </li>
           </ul>
