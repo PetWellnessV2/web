@@ -48,7 +48,20 @@ export class LoginComponent implements OnInit, AfterViewInit {
           alert('Usuario iniciado correctamente');
           console.log('Usuario iniciado correctamente');
           this.showSnackBar('Usuario iniciado correctamente');
-          this.router.navigate(['/consults/consultas-duenio']);
+          switch (this.UsuarioService.GetUsuarioActivo()) {
+            case "Dueños": {
+              this.router.navigate(['/consults/consultas-duenio']);
+              break;
+            }
+            case "Veterinario": {
+              this.router.navigate(['/consults/consultas-vet']);
+              break;
+            }
+            case "Albergues": {
+      
+              break;
+            }
+          }
         },
         error: (error) => {
           alert('El correo o la contraseña son incorrectos');

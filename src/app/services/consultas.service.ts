@@ -34,6 +34,26 @@ export interface ReservaRequest {
   estadoConsulta: string;
 }
 
+export interface InformeRequest {
+  idMascota: number;
+  presionArterial: number;
+  pulso: number;
+  temperatura: number;
+  peso: number;
+  altura: number;
+}
+
+export interface NotaConsultaRequest {
+  idMascota: number;
+  descripcion: string;
+}
+
+export interface NotaConsultaResponse {
+  idMascota: number;
+  descripcion: string;
+  fecha: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -68,15 +88,41 @@ export class ConsultasService {
     return this.http.get<Mascota[]>(`${this.baseURL}/admin/registromascotas`, { headers });
   }
 
+  obtenerExamen(mascotaId: number): Observable<InformeRequest[]> {
+    const headers = this.getAuthHeaders();
+    return this.http.get<InformeRequest[]>(`${this.baseURL}/examenes-fisicos/mascotas/${mascotaId}/examenes-fisicos`, { headers });
+  }
+
+  obtenerNota(mascotaId: number): Observable<NotaConsultaResponse[]> {
+    const headers = this.getAuthHeaders();
+    return this.http.get<NotaConsultaResponse[]>(`${this.baseURL}/notas-consulta/mascotas/${mascotaId}/notas`, { headers });
+  }
+
   obtenerHorarios(): Observable<Horario[]> {
       const headers = this.getAuthHeaders();
       return this.http.get<Horario[]>(`${this.baseURL}/horarios-disponibles`, { headers });
+    }
+
+    obtenerHorariosVet(vetid: number): Observable<Horario[]> {
+      const headers = this.getAuthHeaders();
+      return this.http.get<Horario[]>(`${this.baseURL}/horarios-disponibles/veterinario/${vetid}`, { headers });
     }
 
   registrarReserva(reserva: ReservaRequest): Observable<void> {
       const headers = this.getAuthHeaders();
       return this.http.post<void>(`${this.baseURL}/consultas`, reserva, { headers });
     }
+
+    registrarInforme(informe: InformeRequest): Observable<void> {
+      const headers = this.getAuthHeaders();
+      return this.http.post<void>(`${this.baseURL}/examenes-fisicos`, informe, { headers });
+    }
+
+    registrarNotaConsulta(notaConsulta: NotaConsultaRequest): Observable<void> {
+      const headers = this.getAuthHeaders();
+      return this.http.post<void>(`${this.baseURL}/notas-consulta`, notaConsulta, { headers });
+    }
+
 
   private getAuthHeaders(): HttpHeaders {
       const token = this.storageService.getAuthToken();

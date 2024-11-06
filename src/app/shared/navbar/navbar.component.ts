@@ -21,9 +21,9 @@ export class NavbarComponent implements OnInit {
     );
   }
   onLogout(): void {
-    this.authService.logout_();  // Cambia el estado a no autenticado
+    this.authService.logout_();
     this.authService.logout();
-    this.router.navigate(['/authentication/login']);  // Redirige a la pantalla de login
+    this.router.navigate(['/authentication/login']);
   }
   setActiveLabel(label: string){
     this.activeLabel = label;

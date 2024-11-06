@@ -7,7 +7,7 @@ import { ConsultasService, Horario, Mascota, ReservaRequest } from '../../servic
   styleUrl: './consultas.component.css'
 })
 export class ConsultasComponent implements OnInit {
-  mascotas: Mascota[] = [];
+    mascotas: Mascota[] = [];
     horarios: Horario[] = [];
     selectedMascotaId: number | null = null;
     selectedHorarioId: number | null = null;

@@ -1,1 +1,21 @@
-<p>veterinario works!</p>
+<body id="Cuerpo">
+    <section id="Fondo">
+        <div class="titulo">
+            <h1>Consultas</h1>
+        </div>
+        <button class="btn-reservar" routerLink="/consults/reservar-consulta">
+            Reservar consulta
+        </button>
+        <div class="consultas">
+            <div *ngFor="let consulta of consultas" class="consulta">
+                <h2>Nombre de la mascota: {{ consulta.nombre_mascota }}</h2>
+                <p>Tipo de consulta: {{ consulta.tipoConsulta }}</p>
+                <p>Estado de la consulta: {{ consulta.estadoConsulta }}</p>
+                <p>Fecha: {{ consulta.fecha }}</p>
+                <p>Hora: {{ consulta.hora }}</p>
+                <p>Razón de la consulta: {{ consulta.razonConsulta }}</p>
+                <button class="btn-consultas" routerLink="/consults/consultas-vet-post">Ingresar a la consulta</button>
+            </div>
+        </div>
+    </section>
+</body>
