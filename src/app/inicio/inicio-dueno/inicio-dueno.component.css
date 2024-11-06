@@ -186,7 +186,6 @@ header h1 span {
   background: #003049;
 }
 
-
 /*Calendario*/
 
 .calendar {
@@ -203,31 +202,47 @@ header h1 span {
   cursor: pointer;
 }
 
-.month-dropdown {
+.month-year-selection {
+  display: flex;
+  gap: 10px;
+}
+
+.dropdown {
+  position: relative;
+  cursor: pointer;
+  font-size: 20px; 
+  color: #003049;
+  font-weight: bold;
+}
+
+.dropdown-icon {
+  margin-left: 5px;
+}
+
+.month-dropdown, .year-dropdown {
   position: absolute;
   top: 100%;
   left: 0;
   background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  z-index: 1;
+  border: 1px solid #ddd;
+  width: 100px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
 }
 
-.month-dropdown ul {
+.month-dropdown ul, .year-dropdown ul {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
-.month-dropdown li {
-  padding: 8px;
-  text-align: left;
+.month-dropdown li, .year-dropdown li {
+  padding: 10px;
   cursor: pointer;
 }
 
-.month-dropdown li:hover {
+.month-dropdown li:hover, .year-dropdown li:hover {
   background-color: #f0f0f0;
 }
 
@@ -240,7 +255,8 @@ header h1 span {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .calendar-navigation .prev,

@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { MascotaResponse } from '../interfaces/mascota-response.interface';
+import { MascotaResponse } from '../models/mascota-response.model';
 import { Observable } from 'rxjs';
 
 @Injectable({

@@ -1,8 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { TareaResponse } from '../interfaces/tarea-response.interface';
+
 import { Observable } from 'rxjs';
+import { TareaResponse } from '../models/tarea-response.interface';
 
 @Injectable({
   providedIn: 'root'

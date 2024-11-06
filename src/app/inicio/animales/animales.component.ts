@@ -1,4 +1,4 @@
-import { MascotaResponse } from './../interfaces/mascota-response.interface';
+import { MascotaResponse } from '../models/mascota-response.model';
 import { MascotasService } from '../services/mascotas.service';
 import { Component } from '@angular/core';
 interface Mascotas {
