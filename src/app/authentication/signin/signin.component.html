@@ -67,11 +67,11 @@
             </section>
             <section *ngIf="Mostrar()=='Veterinario'">
                 <h3>Especialidad</h3>
-                <input list="Especialidad" name="Especialidad" required>
+                <input list="Especialidad" name="Especialidad" formControlName="institucionEducativa" required>
             </section>
             <section *ngIf="Mostrar()=='Veterinario'">
                 <h3>Institución educativa</h3>
-                <input list="Institucion-educativa" name="Institucion-educativa" required>
+                <input list="Institucion-educativa" name="Institucion-educativa" formControlName="especialidad" required>
             </section>
             <section class="Contra">
                 <h3>Contraseña</h3>
