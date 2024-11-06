@@ -16,14 +16,15 @@ import { ConsultsModule } from './consults/consults.module';
 import { RegistrarMascotaModule } from './registrar-mascota/registrar-mascota.module';
 import { provideHttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { InformeMascotaComponent } from './informe-mascota/informe-mascota.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MascotasComponent,
-    PreparacionConsultaComponent
+    PreparacionConsultaComponent,
+    InformeMascotaComponent
   ],
   imports: [
     HttpClientModule,
@@ -39,8 +40,6 @@ import { FormsModule } from '@angular/forms';
     HistorialModule,
     MeetingModule,
     ConsultsModule,
-    MatIconModule,
-    MatIcon,
     FormsModule
   ],
   providers: [provideHttpClient()],
