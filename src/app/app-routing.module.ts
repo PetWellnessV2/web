@@ -13,9 +13,10 @@ const routes: Routes = [
   { path: 'meeting', loadChildren: () => import('./meeting/meeting.module').then(m => m.MeetingModule) },
   { path: 'consults', loadChildren: () => import('./consults/consults.module').then(m => m.ConsultsModule) },
   { path: 'registrar-mascota', loadChildren: () => import('./registrar-mascota/registrar-mascota.module').then(m => m.RegistrarMascotaModule) },
-  { path: 'informe', component: InformeMascotaComponent},
+  { path: 'informe-mascota/:idMascota', component: InformeMascotaComponent},
   { path: 'mascotas', component: MascotasComponent},
-  { path: 'mascotas-dueno', component: MascotasDuenoComponent}
+  { path: 'mascotas-dueno', component: MascotasDuenoComponent},
+  
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

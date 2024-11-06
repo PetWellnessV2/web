@@ -10,7 +10,7 @@
                 <p>Género: {{ mascota.genero }}</p>
                 <p>Raza: {{ mascota.raza }}</p>
                 <p>Edad: {{ mascota.edad }} años</p>
-                <button class="btn-consultas" routerLink="/informe">Ver registro de salud</button>
+                <button class="btn-consultas" (click)="verRegistroSalud(mascota.idMascota)">Ver registro de salud</button>
             </div>
         </div>
     </section>

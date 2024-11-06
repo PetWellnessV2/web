@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ConsultasService, MascotaResponse } from '../services/consultas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mascotas-dueno',
@@ -9,7 +10,7 @@ import { ConsultasService, MascotaResponse } from '../services/consultas.service
 export class MascotasDuenoComponent {
   mascotas: MascotaResponse[] = [];
 
-  constructor(private consultaService: ConsultasService) {}
+  constructor(private consultaService: ConsultasService, private router: Router) {}
 
   ngOnInit(): void {
     this.cargarMascotas();
@@ -32,5 +33,9 @@ export class MascotasDuenoComponent {
     }, error => {
         console.error("Error eliminando la mascota:", error);
     });
+}
+verRegistroSalud(idMascota: number): void {
+  // Redirige al componente de informe con el ID de la mascota en la URL
+  this.router.navigate(['/informe-mascota', idMascota]);
 }
 }

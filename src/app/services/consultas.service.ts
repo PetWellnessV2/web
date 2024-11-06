@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StorageService } from './storage.service';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
 
 export interface Consulta {
   idConsulta: number;
@@ -12,6 +13,16 @@ export interface Consulta {
   fecha: string;
   hora: string;
   razonConsulta: string;
+}
+
+export interface MascotaRegister {
+  usuarioId: number;
+  especie: string;
+  raza: string;
+  nombre: string;
+  genero: string;
+  edad: number;
+  fechaNacimiento: string;
 }
 
 export interface Mascota {
@@ -72,7 +83,7 @@ export class ConsultasService {
   private http = inject(HttpClient);
   private storageService = inject(StorageService);
   constructor() { }
-
+  private authService = inject(AuthService);
   obtenerConsultas(): Observable<Consulta[]> {
     const token = this.storageService.getAuthToken();
     
@@ -101,14 +112,25 @@ export class ConsultasService {
     return this.http.delete<void>(`${this.baseURL}/admin/registromascotas/${idConsulta}`, { headers });
   }
 
+  obtenerMascotasUsuario(): Observable<MascotaResponse[]> {
+    const usuarioId = this.authService.getUserId();
+    if (!usuarioId) {
+      throw new Error('Usuario no autenticado');
+    }
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    // Incluye el usuarioId como un parámetro en la URL
+    return this.http.get<MascotaResponse[]>(`${this.baseURL}/admin/registromascotas/${usuarioId}/mascotas`, { headers });
+  }
+
   obtenerMascotas(): Observable<Mascota[]> {
     const headers = this.getAuthHeaders();
     return this.http.get<Mascota[]>(`${this.baseURL}/admin/registromascotas`, { headers });
   }
 
   obtenerMascotasDetalle(): Observable<MascotaResponse[]> {
+    const usuarioId = this.authService.getUserId();
     const headers = this.getAuthHeaders();
-    return this.http.get<MascotaResponse[]>(`${this.baseURL}/admin/registromascotas`, { headers });
+    return this.http.get<MascotaResponse[]>(`${this.baseURL}/admin/registromascotas/${usuarioId}/mascotas`, { headers });
   }
 
   obtenerExamen(mascotaId: number): Observable<InformeRequest[]> {
@@ -139,6 +161,11 @@ export class ConsultasService {
     registrarInforme(informe: InformeRequest): Observable<void> {
       const headers = this.getAuthHeaders();
       return this.http.post<void>(`${this.baseURL}/examenes-fisicos`, informe, { headers });
+    }
+
+    registrarMascota(mascota: MascotaRegister): Observable<void> {
+      const headers = this.getAuthHeaders();
+      return this.http.post<void>(`${this.baseURL}/admin/registromascotas`, mascota, { headers });
     }
 
     registrarNotaConsulta(notaConsulta: NotaConsultaRequest): Observable<void> {
