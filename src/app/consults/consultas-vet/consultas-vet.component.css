@@ -1,0 +1,169 @@
+#Cuerpo {
+    zoom: 100%; 
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: #f5f5f5;
+}
+
+#Fondo {
+    margin: 25px 0;
+    box-sizing: border-box;
+    width: 95%;
+    display: flex;
+    gap: 30px;
+}
+
+.reserva-consulta, .horarios-disponibles {
+    background: #EDEDED;
+    border-radius: 15px;
+    padding: 20px;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.titulo h1 {
+    color: #0099B2;
+    font-family: Quicksand;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.formulario {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: "Open Sans";
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+
+#razonConsulta {
+    width: 97%;
+}
+
+.reservar-btn {
+    background-color: #93e9ec;
+    color: #003049;
+    border: none;
+    padding: 12px 0;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.reservar-btn:hover {
+    background-color: #80d3d6;
+}
+
+.calendario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.mes {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    color: #003049;
+}
+
+.arrow {
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+.dias-semana, .fechas {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    gap: 10px;
+}
+
+.dias-semana div, .fechas div {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-family: "Open Sans";
+    font-size: 14px;
+    color: #666;
+}
+
+.fechas .active {
+    background-color: #93e9ec;
+    color: #003049;
+    font-weight: bold;
+}
+
+.horarios-lista {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    row-gap: 10px;
+}
+
+.horario {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #93e9ec;
+    padding: 10px;
+    border-radius: 10px;
+    color: #003049;
+    font-family: "Open Sans";
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.horario:hover {
+    transform: scale(1.02);
+}
+
+.veterinario {
+    font-weight: bold;
+}
+
+.hora-fecha {
+    display: flex;
+    gap: 10px;
+}
+
+.hora, .fecha {
+    background-color: #003049;
+    color: #FFF;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.horario.selected {
+    background-color: #80d3d6; 
+    color: #002633; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
