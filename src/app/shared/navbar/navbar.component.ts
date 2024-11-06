@@ -3,7 +3,6 @@ import { NavigationEnd, Router } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
 import { filter } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -29,7 +28,12 @@ export class NavbarComponent implements OnInit {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         this.isCartVisible = this.userRole === 'dueño' && event.url === '/inicio-dueno';
-      });
+    });
+    this.authService.isLoggedIn.subscribe(
+      (loggedIn: boolean) => {
+        this.isLoggedIn = loggedIn;
+      }
+    );
   }
 
   toggleCart() {
@@ -38,15 +42,8 @@ export class NavbarComponent implements OnInit {
 
   updateNotificationCount(count: number) {
     this.notificationCount = count;
-
-
-  ngOnInit(): void {
-    this.authService.isLoggedIn.subscribe(
-      (loggedIn: boolean) => {
-        this.isLoggedIn = loggedIn;
-      }
-    );
   }
+
   onLogout(): void {
     this.authService.logout_();  // Cambia el estado a no autenticado
     this.authService.logout();
