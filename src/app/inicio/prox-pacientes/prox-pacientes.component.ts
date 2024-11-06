@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './prox-pacientes.component.css'
 })
 export class ProxPacientesComponent {
+  selectedTab: string = 'resumen';
 
+  selectTab(tab: string) {
+    this.selectedTab = tab;
+  }
 }
