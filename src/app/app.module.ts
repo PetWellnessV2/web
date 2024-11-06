@@ -16,6 +16,7 @@ import { ConsultsModule } from './consults/consults.module';
 import { RegistrarMascotaModule } from './registrar-mascota/registrar-mascota.module';
 import { provideHttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -38,6 +39,8 @@ import { FormsModule } from '@angular/forms';
     HistorialModule,
     MeetingModule,
     ConsultsModule,
+    MatIconModule,
+    MatIcon,
     FormsModule
   ],
   providers: [provideHttpClient()],

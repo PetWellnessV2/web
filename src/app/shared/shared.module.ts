@@ -5,6 +5,7 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { SharedComponent } from './shared.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -15,11 +16,13 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     CommonModule,
-    SharedRoutingModule
+    SharedRoutingModule,
+    MatIcon,
+    MatIconModule
   ],
   exports: [
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
   ]
 })
 export class SharedModule { }

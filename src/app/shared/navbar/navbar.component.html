@@ -1,4 +1,29 @@
-<header class="navbar" *ngIf="isLoggedIn">
+<nav class="navbar">
+  <div class="navbar-brand" *ngIf="isLoggedIn">
+    <img src="assets/Logo.png" alt="PetWellness Logo">
+  </div>
+  <ul class="navbar-links">
+    <li *ngIf="userRole === 'Veterinario'"><a routerLink="/inicio-vet" routerLinkActive="active">Inicio</a></li>
+    <li *ngIf="userRole === 'Dueños'"><a routerLink="/inicio-dueno" routerLinkActive="active">Inicio</a></li>
+    <li *ngIf="userRole === 'Veterinario'"><a routerLink="/consultas" routerLinkActive="active">Consultas</a></li>
+    <li *ngIf="userRole === 'Dueños'"><a routerLink="/consultas-duenio" routerLinkActive="active">Consultas</a></li>
+    <li *ngIf="userRole === 'Veterinario'"><a routerLink="/mascotas" routerLinkActive="active">Mascotas</a></li>
+    <li *ngIf="userRole === 'Dueños'"><a routerLink="/mascotas" routerLinkActive="active">Mascotas</a></li>
+  </ul>
+  <div class="navbar-actions">
+    <div class="search-container">
+      <button class="search-button">
+        <mat-icon aria-hidden="false" fontIcon="search"></mat-icon>
+      </button>
+      <input type="text" class="search-input" placeholder="Buscar...">
+    </div>
+    <!-- Carrito de compras: Solo visible para la vista de dueño -->
+    <div *ngIf="isCartVisible" class="shopping-cart-container">
+      <button class="shopping-cart-button" (click)="toggleCart()">
+        <mat-icon aria-hidden="false" fontIcon="shopping_cart"></mat-icon>
+        <span class="notification-count" *ngIf="notificationCount > 0">{{ notificationCount }}</span>
+      </button>
+/*<header class="navbar" *ngIf="isLoggedIn">
     <div class="navbar-logo">
         <img src="/assets/Logo.png" alt="logo">
     </div>
@@ -14,6 +39,17 @@
         </div>
     </nav>
     <div class="navbar-user">
-        <img src="/assets/Dueno.png" alt="dueño"  (click)="onLogout()">
+        <img src="/assets/Dueno.png" alt="dueño"  (click)="onLogout()">*/
     </div>
-</header>
+    <!-- Notificaciones: Visible para ambos roles -->
+    <div class="notification-container">
+      <mat-icon aria-hidden="false" fontIcon="notifications"></mat-icon>
+      <span class="notification-count" *ngIf="notificationCount > 0">{{ notificationCount }}</span>
+    </div>
+  
+    <div class="user-profile">
+      <img src="/assets/Dueno.png" alt="dueño"  (click)="onLogout()">
+    </div>
+  </div>
+  
+</nav>

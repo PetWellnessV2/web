@@ -1,0 +1,650 @@
+.homeduenio {
+  font-family: 'Open Sans', sans-serif;
+  padding: 20px;
+  background-color: #F0F0F2;
+}
+
+header {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 32px;
+  color: #003049;
+  font-weight: 400;
+}
+
+header h1 span {
+  color: #003049;
+  font-weight: bold;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  grid-template-rows: auto auto;
+}
+
+.dashboard-item {
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/*Tareas*/
+.general-tareas {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column: span 2;
+  padding: 0;
+}
+
+.tareas-de-hoy {
+  padding: 20px;
+}
+
+.tareas-de-hoy .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tareas-de-hoy h2 {
+  margin: 0;
+  color: #003049;
+}
+
+.task-count {
+  background: #54AFB2;
+  color: #fff;
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.tasks {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  grid-template-rows: repeat(3, auto); 
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+.task-item {
+  margin-bottom: 0;
+}
+
+.task-container {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #54AFB2;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+.icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.task-details {
+  flex-grow: 1;
+}
+
+.task-details p {
+  margin: 0;
+  font-size: 16px;
+  color: #003049;
+  font-weight: 600;
+}
+
+.task-details time {
+  font-size: 12px;
+  color: #726C6C;
+}
+
+.external-link {
+  font-size: 16px;
+  color: #003049;
+  cursor: pointer;
+}
+
+.ver-mas-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.ver-mas {
+  background: none;
+  border: none;
+  color: #003049;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.ver-mas:hover {
+  text-decoration: underline;
+}
+
+/*Mascotas*/
+.mascotas {
+  grid-column: span 1; 
+  grid-row: span 2; 
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.mascotas h2 {
+  font-size: 20px;
+  color: #003049;
+  margin-bottom: 10px;
+}
+
+.mascota-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mascota-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.historial-btn {
+  background: #54AFB2;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.historial-btn:hover {
+  background: #003049;
+}
+
+/*Calendario*/
+
+.calendar {
+  text-align: center;
+  background: #fff;
+  padding: 20px;
+}
+
+.calendar-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.month-year-selection {
+  display: flex;
+  gap: 10px;
+}
+
+.dropdown {
+  position: relative;
+  cursor: pointer;
+  font-size: 20px; 
+  color: #003049;
+  font-weight: bold;
+}
+
+.dropdown-icon {
+  margin-left: 5px;
+}
+
+.month-dropdown, .year-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  width: 100px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.month-dropdown ul, .year-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.month-dropdown li, .year-dropdown li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.month-dropdown li:hover, .year-dropdown li:hover {
+  background-color: #f0f0f0;
+}
+
+.calendar-header h2 {
+  margin: 0px;
+  color: #003049;
+}
+
+.calendar-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.calendar-navigation .prev,
+.calendar-navigation .next {
+  cursor: pointer;
+  font-size: 18px;
+  color: #003049;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dates-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.dates-container .dates {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.dates-container .dates li {
+  font-size: 14px;
+  color: #003049;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dates-container .dates li.active {
+  background-color: #54afb2;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 12px;
+}
+
+.calendar-navigation .prev:hover,
+.calendar-navigation .next:hover {
+  color: #0077b6;
+}
+
+.dates-container {
+  display: flex;
+  justify-content: center;
+}
+
+.dates-container .dates {
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.dates-container .dates li {
+  font-size: 14px;
+  color: #003049;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dates-container .dates li.active {
+  background-color: #54afb2;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 12px;
+}
+
+.calendar-navigation .prev:hover,
+.calendar-navigation .next:hover {
+  color: #0077b6;
+}
+
+
+.calendar-header .add-reminder {
+  background: none;
+  border: none;
+  color: #003049;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.appointments {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left; 
+  max-height: 300px; 
+  overflow-y: auto;
+}
+
+.appointments::-webkit-scrollbar {
+  width: 6px; 
+}
+
+.appointments::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 10px; 
+}
+
+.appointments::-webkit-scrollbar-thumb {
+  background: #003049;
+  border-radius: 10px;
+}
+
+.appointments::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.appointments li {
+  margin-bottom: 10px;
+}
+
+.task-container {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #54AFB2;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+.icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.task-details {
+  flex-grow: 1;
+}
+
+.task-details p {
+  margin: 0;
+  font-size: 16px;
+  color: #003049;
+  font-weight: 600;
+}
+
+.task-details time {
+  font-size: 12px;
+  color: #676D89;
+}
+
+.external-link {
+  font-size: 16px;
+  color: #003049;
+  cursor: pointer;
+}
+
+.add-reminder:hover {
+  text-decoration: underline;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #003049;
+}
+
+.delete-btn:hover {
+  color: #d9534f;
+}
+
+.add-reminder:hover {
+  text-decoration: underline;
+}
+
+/*Proximo paciente*/
+.proximo-paciente .patient-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.proximo-paciente  h2 {
+  margin: 0;
+  color: #003049;
+}
+
+.proximo-paciente .external-link {
+  font-size: 16px;
+  color: #003049;
+  cursor: pointer;
+}
+
+.patient-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-direction: column;
+}
+
+.patient-info img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.patient-details {
+  text-align: center;
+}
+.patient-details h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #003049;
+  font-weight: 700;
+}
+
+.patient-details p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #003049;
+}
+
+.patient-details span {
+  color: #003049;
+}
+
+.patient-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.stat-item {
+  text-align: center;
+  flex: 1;
+}
+
+.stat-item:not(:last-child) {
+  margin-right: 30px; 
+}
+
+.patient-stats span {
+  display: block;
+  font-size: 12px;
+  color: #676D89;
+}
+
+.patient-stats p {
+  margin: 0;
+  font-size: 14px;
+  color: #003049;
+  font-weight: 600;
+}
+
+.patient-notes {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 10px;
+}
+
+.tabs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.tabs li {
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+}
+
+.tabs .active {
+  color: #003049;
+  font-weight: 600;
+  border-bottom: 2px solid #54AFB2;
+}
+
+.patient-notes p {
+    font-size: 14px;
+    color: #003049;
+    margin-top: 10px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center; 
+}
+
+.buttons .subir {
+  margin-left: auto; 
+  background-color: #54AFB2;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.patient-notes button {
+    background-color: #54AFB2;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.patient-notes button:hover {
+    background-color: #003049;
+}
+ 
+@media (max-width: 1024px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+}
+
+.example-full-width {
+  width: 100%;
+}
+.example-form mat-form-field {
+  display: block;
+  margin-bottom: 0;
+  margin: 0;
+}
+.example-form mat-form-field .mat-form-field-wrapper {
+  padding: 0;
+}
+.example-form mat-form-field .mat-form-field-infix {
+  padding: 0;
+}
+.example-form .mat-hint {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: #fff;
+}
+.example-form button {
+  margin-top: 12px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #54AFB2;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.example-form button:hover {
+  background-color: #54AFB2;
+}
+.tab-content p {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  color: #424242;
+}

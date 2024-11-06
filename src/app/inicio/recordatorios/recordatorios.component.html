@@ -1,1 +1,49 @@
-<p>recordatorios works!</p>
+<div class="container">
+  <h1>Agregar recordatorio</h1>
+  <p>Jose y Chewbacca • Hoy 9:00 AM</p>
+  <div class="content">
+    <div class="left-panel">
+      <h2>Próximos recordatorios</h2>
+      <ul class="reminders-list">
+        <li *ngFor="let reminder of reminders">
+          <div class="reminder-item">
+            <div class="icon-container">
+              <img [src]="reminder.icon" alt="icon">
+            </div>
+            <div class="reminder-details">
+              <p class="title">{{ reminder.title }}</p>
+              <p class="description">{{ reminder.description }}</p>
+              <p class="time">{{ reminder.time }}</p>
+            </div>
+            <button class="delete-btn" (click)="deleteReminder(reminder)">🗑️</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="right-panel">
+      <form (ngSubmit)="addReminder()">
+        <label>Nombre:
+          <input type="text" [(ngModel)]="newReminder.title" name="title" required>
+        </label>
+        <label>¿Con quién?
+          <input type="text" [(ngModel)]="newReminder.description" name="description">
+        </label>
+        <label>Fecha:
+          <input type="date" [(ngModel)]="newReminder.date" name="date">
+        </label>
+        <label>Hora:
+          <input type="time" [(ngModel)]="newReminder.time" name="time">
+        </label>
+        <label>Tipo de recordatorio:
+          <select [(ngModel)]="newReminder.type" name="type">
+            <option value="consulta">Consulta</option>
+            <option value="revisión">Revisión</option>
+            <option value="vacunación">Vacunación</option>
+          </select>
+        </label>
+        <button type="submit" class="add-btn">Añadir recordatorio</button>
+      </form>
+    </div>
+  </div>
+</div>
