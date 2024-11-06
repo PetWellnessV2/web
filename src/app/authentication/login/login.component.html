@@ -6,18 +6,25 @@
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <section>
                 <h3>Email</h3>
-                <input type="email" name="Email" formControlName="email" required>
+                <input type="email" name="Email" formControlName="email" placeholder="Ingrese su correo electrónico" required>
+                <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)" class="error">
+                    <div *ngIf="controlHasError('email', 'required')">Este campo es obligatorio</div>
+                    <div *ngIf="controlHasError('email', 'email')">Correo electrónico inválido</div>
+                </div>
             </section>
             <section class="Contra">
                 <h3>Contraseña</h3>
-                <input id="Ver-contrasena" type="password" formControlName="password" name="Contrasena" required>
+                <input id="Ver-contrasena" type="password" formControlName="password" name="Contrasena" placeholder="Ingrese su contraseña" required>
                 <img id="Ojo" (click)="OcultarContrasena()" class="Ver-contrasena" src="./assets/ojo.png" alt="Ojo de vista de contraseña">
+                <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="error">
+                    <div *ngIf="controlHasError('password', 'required')">Este campo es obligatorio</div>
+                </div>
             </section>
-            <button class="Acceder">Acceder</button>
+            <button class="Acceder" style="cursor: pointer;">Acceder</button>
             <span class="Recuperar" routerLink="/authentication/verificacion">Olvidé mi contraseña</span>
             <span class="Separador"></span>
             <span>¿No tienes cuenta?</span>
-            <button class="Crear" routerLink="/authentication/signin">Crear una cuenta</button>
+            <button class="Crear" routerLink="/authentication/signin" style="cursor: pointer;">Crear una cuenta</button>
         </form>
     </section>
 </body>
