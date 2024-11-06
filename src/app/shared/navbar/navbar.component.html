@@ -1,5 +1,5 @@
-<nav class="navbar">
-  <div class="navbar-brand" *ngIf="isLoggedIn">
+<nav class="navbar" *ngIf="isLoggedIn">
+  <div class="navbar-brand">
     <img src="assets/Logo.png" alt="PetWellness Logo">
   </div>
   <ul class="navbar-links">
@@ -23,7 +23,7 @@
         <mat-icon aria-hidden="false" fontIcon="shopping_cart"></mat-icon>
         <span class="notification-count" *ngIf="notificationCount > 0">{{ notificationCount }}</span>
       </button>
-/*<header class="navbar" *ngIf="isLoggedIn">
+  <!--<header class="navbar" *ngIf="isLoggedIn">
     <div class="navbar-logo">
         <img src="/assets/Logo.png" alt="logo">
     </div>
@@ -39,7 +39,7 @@
         </div>
     </nav>
     <div class="navbar-user">
-        <img src="/assets/Dueno.png" alt="dueño"  (click)="onLogout()">*/
+        <img src="/assets/Dueno.png" alt="dueño"  (click)="onLogout()">-->
     </div>
     <!-- Notificaciones: Visible para ambos roles -->
     <div class="notification-container">
@@ -47,7 +47,7 @@
       <span class="notification-count" *ngIf="notificationCount > 0">{{ notificationCount }}</span>
     </div>
   
-    <div class="user-profile">
+    <div class="navbar-user">
       <img src="/assets/Dueno.png" alt="dueño"  (click)="onLogout()">
     </div>
   </div>
