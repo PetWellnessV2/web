@@ -39,9 +39,6 @@ export class ConsultasComponent implements OnInit {
     }
 
     registrarConsulta(): void {
-      console.log('Selected Mascota ID:', this.selectedMascotaId);
-      console.log('Selected Horario ID:', this.selectedHorarioId);
-  
       if (this.selectedMascotaId && this.selectedHorarioId) {
           const reserva: ReservaRequest = {
               idMascota: this.selectedMascotaId,
@@ -52,6 +49,11 @@ export class ConsultasComponent implements OnInit {
           };
           this.consultaService.registrarReserva(reserva).subscribe(() => {
               alert('Consulta registrada con éxito');
+              
+              // Elimina el horario seleccionado de la lista de horarios disponibles
+              this.horarios = this.horarios.filter(horario => horario.idHorario !== this.selectedHorarioId);
+  
+              // Resetea el formulario
               this.resetFormulario();
           }, error => {
               console.error("Error al registrar la consulta:", error);
@@ -59,7 +61,7 @@ export class ConsultasComponent implements OnInit {
       } else {
           alert('Por favor, seleccione una mascota y un horario');
       }
-    } 
+  }
 
     resetFormulario(): void {
         this.selectedMascotaId = null;
