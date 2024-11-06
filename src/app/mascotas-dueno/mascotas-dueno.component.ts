@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Consulta, ConsultasService, Mascota, MascotaResponse } from '../services/consultas.service';
+import { Component } from '@angular/core';
+import { ConsultasService, MascotaResponse } from '../services/consultas.service';
 
 @Component({
-  selector: 'app-mascotas',
-  templateUrl: './mascotas.component.html',
-  styleUrl: './mascotas.component.css'
+  selector: 'app-mascotas-dueno',
+  templateUrl: './mascotas-dueno.component.html',
+  styleUrl: './mascotas-dueno.component.css'
 })
-export class MascotasComponent implements OnInit{
+export class MascotasDuenoComponent {
   mascotas: MascotaResponse[] = [];
 
   constructor(private consultaService: ConsultasService) {}

@@ -19,6 +19,15 @@ export interface Mascota {
   nombre: string;
 }
 
+export interface MascotaResponse {
+  idMascota: number;
+  nombre: string;
+  especie: string;
+  genero: string;
+  raza: string;
+  edad: number;
+}
+
 export interface Horario {
   idHorario: number;
   veterinario_nombre: string;
@@ -83,9 +92,23 @@ export class ConsultasService {
     return this.http.delete<void>(`${this.baseURL}/consultas/${idConsulta}`, { headers });
   }
 
+  eliminarMasota(idConsulta: number): Observable<void> {
+    const token = this.storageService.getAuthToken();
+    const headers = token 
+        ? new HttpHeaders().set('Authorization', `Bearer ${token}`) 
+        : new HttpHeaders();
+
+    return this.http.delete<void>(`${this.baseURL}/admin/registromascotas/${idConsulta}`, { headers });
+  }
+
   obtenerMascotas(): Observable<Mascota[]> {
     const headers = this.getAuthHeaders();
     return this.http.get<Mascota[]>(`${this.baseURL}/admin/registromascotas`, { headers });
+  }
+
+  obtenerMascotasDetalle(): Observable<MascotaResponse[]> {
+    const headers = this.getAuthHeaders();
+    return this.http.get<MascotaResponse[]>(`${this.baseURL}/admin/registromascotas`, { headers });
   }
 
   obtenerExamen(mascotaId: number): Observable<InformeRequest[]> {
