@@ -11,8 +11,16 @@
         </section>                
         <!-- Mascotas -->
         <section class="dashboard-item mascotas">
-            <app-animales></app-animales>
-        </section>   
+          <h2>Mascotas</h2>
+          <ul class="mascota-list">
+            <li *ngFor="let mascota of mascotas">
+              <div class="mascota-info">
+                <p><strong>Nombre:</strong> {{ mascota.nombre }}</p>
+                <p><strong>Edad:</strong> {{ mascota.edad }} años</p>
+              </div>
+            </li>
+          </ul>
+        </section>  
         <!-- Recordatorios -->      
         <section class="dashboard-item calendar">
           <div class="calendar-header">
