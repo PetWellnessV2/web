@@ -1,7 +1,7 @@
 import { UsuarioService } from './../../services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { UsuarioService } from '../../services/usuario.service';
+//import { UsuarioService } from '../../services/usuario.service';
 import { filter } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 
