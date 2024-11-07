@@ -1,4 +1,5 @@
 import { UsuarioService } from './../../services/usuario.service';
+import { TokenService } from './../../services/token.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -15,7 +16,7 @@ export class CodigoComponent implements OnInit{
   token: string = '';
   errorMessage: string = '';
 
-  constructor(private UsuarioService: UsuarioService, private http: HttpClient, private router: Router) {}
+  constructor(private UsuarioService: UsuarioService, private http: HttpClient, private router: Router, private tokenService: TokenService) {}
 
   ngOnInit(): void {
     this.UsuarioService.UsuarioActivo.subscribe(Usuario =>{
@@ -50,6 +51,7 @@ export class CodigoComponent implements OnInit{
         .subscribe({
           next: (response: boolean) => {
             if (response) {
+              this.tokenService.setToken(this.token);
               this.router.navigate(['/authentication/cambiar-contrasena']);
             } else {
               this.errorMessage = 'El código ingresado es incorrecto o ha expirado.';
