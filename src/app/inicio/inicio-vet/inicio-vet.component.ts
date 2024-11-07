@@ -22,7 +22,7 @@ export class InicioVetComponent implements OnInit {
     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
   ];
   years: number[] = [];
-  recordatorios: Recordatorio[] = []; // Cambié el tipo a Recordatorio para que coincida con el servicio
+  recordatorios: Recordatorio[] = []; 
 
   constructor(
     public dialog: MatDialog, 
