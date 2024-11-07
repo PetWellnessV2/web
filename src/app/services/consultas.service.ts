@@ -103,13 +103,13 @@ export class ConsultasService {
     return this.http.delete<void>(`${this.baseURL}/consultas/${idConsulta}`, { headers });
   }
 
-  eliminarMasota(idConsulta: number): Observable<void> {
+  eliminarMasota(idConsulta:number):Observable<void>{
     const token = this.storageService.getAuthToken();
     const headers = token
       ? new HttpHeaders().set('Authorization', `Bearer ${token}`)
       : new HttpHeaders();
-
     return this.http.delete<void>(`${this.baseURL}/admin/registromascotas/${idConsulta}`, { headers });
+
   }
 
   obtenerMascotasUsuario(): Observable<MascotaResponse[]> {
