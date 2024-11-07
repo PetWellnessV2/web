@@ -1,7 +1,9 @@
 <div class="container">
   <h1>Agregar recordatorio</h1>
   <p>Jose y Chewbacca • Hoy 9:00 AM</p>
+  
   <div class="content">
+    <!-- Panel Izquierdo: Lista de Recordatorios -->
     <div class="left-panel">
       <h2>Próximos recordatorios</h2>
       <ul class="reminders-list">
@@ -15,12 +17,14 @@
               <p class="description">{{ reminder.description }}</p>
               <p class="time">{{ reminder.time }}</p>
             </div>
-            <button class="delete-btn" (click)="deleteReminder(reminder)">🗑️</button>
+            <!-- Pasamos solo el ID del recordatorio a la función de eliminación -->
+            <button class="delete-btn" (click)="deleteReminder(reminder.id)">🗑️</button>
           </div>
         </li>
       </ul>
     </div>
 
+    <!-- Panel Derecho: Formulario para Crear Nuevo Recordatorio -->
     <div class="right-panel">
       <form (ngSubmit)="addReminder()">
         <label>Nombre:
@@ -30,13 +34,13 @@
           <input type="text" [(ngModel)]="newReminder.description" name="description">
         </label>
         <label>Fecha:
-          <input type="date" [(ngModel)]="newReminder.date" name="date">
+          <input type="date" [(ngModel)]="newReminder.date" name="date" required>
         </label>
         <label>Hora:
-          <input type="time" [(ngModel)]="newReminder.time" name="time">
+          <input type="time" [(ngModel)]="newReminder.time" name="time" required>
         </label>
         <label>Tipo de recordatorio:
-          <select [(ngModel)]="newReminder.type" name="type">
+          <select [(ngModel)]="newReminder.type" name="type" required>
             <option value="consulta">Consulta</option>
             <option value="revisión">Revisión</option>
             <option value="vacunación">Vacunación</option>

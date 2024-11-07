@@ -1,16 +1,15 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { RecordatoriosComponent } from '../recordatorios/recordatorios.component';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { RecordatorioResquest } from '../models/recordatorio.request.model';
-import { RecordatoriosService } from '../services/recordatorios.service';
+import { Recordatorio, RecordatoriosService } from '../services/recordatorios.service';
+import { RecordatorioRequest } from '../models/recordatorio.request.model';
 
 @Component({
   selector: 'app-inicio-dueno',
   templateUrl: './inicio-dueno.component.html',
-  styleUrl: './inicio-dueno.component.css'
+  styleUrls: ['./inicio-dueno.component.css']
 })
-export class InicioDuenoComponent {
+export class InicioDuenoComponent implements OnInit {
   daysAndDates: { day: string; date: number; fullDate: Date }[] = [];
   activeIndex: number = 0;
   currentMonth: string = '';
@@ -23,9 +22,13 @@ export class InicioDuenoComponent {
     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
   ];
   years: number[] = [];
-  recordatorios: RecordatorioResquest[] = [];
+  recordatorios: Recordatorio[] = []; // Cambié el tipo a Recordatorio para que coincida con el servicio
 
-  constructor(public dialog: MatDialog, private router: Router, private recordatoriosService: RecordatoriosService) {
+  constructor(
+    public dialog: MatDialog, 
+    private router: Router, 
+    private recordatoriosService: RecordatoriosService
+  ) {
     this.initializeCalendar(new Date());
     this.populateYears();
   }
@@ -36,14 +39,14 @@ export class InicioDuenoComponent {
 
   loadRecordatorios() {
     this.recordatoriosService.obtenerRecordatorios().subscribe(
-      (recordatorios) => (this.recordatorios = recordatorios),
+      (recordatorios) => this.recordatorios = recordatorios,
       (error) => console.error('Error al cargar recordatorios:', error)
     );
   }
 
-  deleteReminder(recordatorio: RecordatorioResquest) {
-    this.recordatoriosService.eliminarRecordatorio(recordatorio.id).subscribe(
-      () => this.loadRecordatorios(),
+  deleteReminder(id: number) {
+    this.recordatoriosService.eliminarRecordatorio(id).subscribe(
+      () => this.loadRecordatorios(), // Recarga los recordatorios después de eliminar uno
       (error) => console.error('Error al eliminar recordatorio:', error)
     );
   }

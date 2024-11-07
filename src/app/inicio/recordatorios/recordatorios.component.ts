@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { RecordatoriosService } from '../services/recordatorios.service';
-import { RecordatorioResponse } from '../models/recordatorio-response.model';
+import { Recordatorio, RecordatoriosService } from '../services/recordatorios.service';
+import { RecordatorioResponse} from '../models/recordatorio-response.model';
 
 @Component({
   selector: 'app-recordatorios',
   templateUrl: './recordatorios.component.html',
-  styleUrl: './recordatorios.component.css'
+  styleUrls: ['./recordatorios.component.css']
 })
 export class RecordatoriosComponent implements OnInit {
-  reminders: any[] = []; // Lista de recordatorios cargados desde el servicio
+  reminders: Recordatorio[] = []; // Lista de recordatorios cargados desde el servicio
 
   newReminder: RecordatorioResponse = {
     title: '',
@@ -35,12 +35,12 @@ export class RecordatoriosComponent implements OnInit {
 
   addReminder() {
     if (this.newReminder.title && this.newReminder.date && this.newReminder.time) {
-      const reminderData = {
-        titulo: this.newReminder.title,
-        descripcion: this.newReminder.description,
-        fechaHora: `${this.newReminder.date}T${this.newReminder.time}`,
-        tipoRecordatorio: this.newReminder.type.toUpperCase(),
-        recordatorioStatus: 'PENDIENTE' // Estado inicial
+      const reminderData: RecordatorioResponse = {
+        title: this.newReminder.title,
+        description: this.newReminder.description,
+        date: this.newReminder.date,
+        time: this.newReminder.time,
+        type: this.newReminder.type
       };
 
       this.recordatoriosService.addRecordatorio(reminderData).subscribe(
@@ -54,8 +54,8 @@ export class RecordatoriosComponent implements OnInit {
     }
   }
 
-  deleteReminder(reminder: any) {
-    this.recordatoriosService.eliminarRecordatorio(reminder.id).subscribe(
+  deleteReminder(id: number) {
+    this.recordatoriosService.eliminarRecordatorio(id).subscribe(
       () => {
         this.loadReminders(); 
       },
