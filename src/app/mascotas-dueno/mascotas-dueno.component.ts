@@ -27,6 +27,7 @@ export class MascotasDuenoComponent implements OnInit{
     if (!id) {
         console.error("ID de la mascota no está definido");
         return;
+
     }
     this.consultaService.eliminarMasota(id).subscribe(() => {
         this.mascotas = this.mascotas.filter(mascotas => mascotas.idMascota !== id);
