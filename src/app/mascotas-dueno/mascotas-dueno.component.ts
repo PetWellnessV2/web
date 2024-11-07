@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ConsultasService, MascotaResponse } from '../services/consultas.service';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './mascotas-dueno.component.html',
   styleUrl: './mascotas-dueno.component.css'
 })
-export class MascotasDuenoComponent {
+export class MascotasDuenoComponent implements OnInit{
   mascotas: MascotaResponse[] = [];
 
   constructor(private consultaService: ConsultasService, private router: Router) {}
@@ -27,6 +27,7 @@ export class MascotasDuenoComponent {
     if (!id) {
         console.error("ID de la mascota no está definido");
         return;
+
     }
     this.consultaService.eliminarMasota(id).subscribe(() => {
         this.mascotas = this.mascotas.filter(mascotas => mascotas.idMascota !== id);
