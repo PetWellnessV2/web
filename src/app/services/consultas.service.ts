@@ -118,7 +118,6 @@ export class ConsultasService {
       throw new Error('Usuario no autenticado');
     }
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    // Incluye el usuarioId como un parámetro en la URL
     return this.http.get<MascotaResponse[]>(`${this.baseURL}/admin/registromascotas/${usuarioId}/mascotas`, { headers });
   }
 
