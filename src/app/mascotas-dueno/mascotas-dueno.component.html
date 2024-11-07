@@ -3,6 +3,9 @@
         <div class="titulo">
             <h1>Mascotas</h1>
         </div>
+        <button class="btn-reservar" routerLink="/registrar-mascota/registrar">
+            Registrar mascota
+        </button>
         <div class="consultas">
             <div *ngFor="let mascota of mascotas" class="consulta">
                 <h2>Nombre de la mascota: {{ mascota.nombre }}</h2>
@@ -11,6 +14,7 @@
                 <p>Raza: {{ mascota.raza }}</p>
                 <p>Edad: {{ mascota.edad }} años</p>
                 <button class="btn-consultas" (click)="verRegistroSalud(mascota.idMascota)">Ver registro de salud</button>
+                <button class="btn-eliminar" (click)="eliminarMascota(mascota.idMascota)">Eliminar</button>
             </div>
         </div>
     </section>

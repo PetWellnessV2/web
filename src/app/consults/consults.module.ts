@@ -6,10 +6,14 @@ import { VeterinarioComponent } from './veterinario/veterinario.component';
 import { DuenoComponent } from './dueno/dueno.component';
 import { ConsultasComponent } from './consultas/consultas.component';
 import { FormsModule } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon';
-import { ConsultasVetComponent } from './consultas-vet/consultas-vet.component';
-import { InformeComponent } from './informe/informe.component';
 import { PostConsultaComponent } from './post-consulta/post-consulta.component';
+import { MatIconModule } from '@angular/material/icon';
+import { InformeComponent } from './informe/informe.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { ConsultasVetComponent } from './consultas-vet/consultas-vet.component';
 
 @NgModule({
   declarations: [
@@ -17,15 +21,19 @@ import { PostConsultaComponent } from './post-consulta/post-consulta.component';
     VeterinarioComponent,
     DuenoComponent,
     ConsultasComponent,
-    ConsultasVetComponent,
+    PostConsultaComponent,
     InformeComponent,
-    PostConsultaComponent
+    ConsultasVetComponent
   ],
   imports: [
     CommonModule,
     ConsultsRoutingModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatButtonModule
   ]
 })
 export class ConsultsModule { }

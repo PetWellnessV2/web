@@ -50,11 +50,15 @@ export class AuthService {
   }
 
   isAuthenticated() : boolean {
-    return this.storageService.getAuthData !== null;
+    return this.storageService.getAuthData() !== null;
   }
 
-  getUser(): AuthResponse | null {
+  getUserId(): number | null {
     const authData = this.storageService.getAuthData();
-    return authData ? authData : null;
+    return authData ? authData.id : null;
+  }
+
+  getAuthToken(): string | null {
+    return this.storageService.getAuthToken();
   }
 }

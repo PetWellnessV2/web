@@ -30,8 +30,8 @@
     <nav class="navbar-nav">
         <div class="container-nav">
             <div class="label" routerLink="" (click)="setActiveLabel('Inicio')" [ngClass]="{'active': activeLabel === 'Inicio'}">Inicio</div>
-            <div class="label" routerLink="/consults/consultas-duenio" (click)="setActiveLabel('Consultas')" [ngClass]="{'active': activeLabel === 'Consultas'}">Consultas</div>
-            <div class="label" routerLink="" (click)="setActiveLabel('Mascotas')" [ngClass]="{'active': activeLabel === 'Mascotas'}">Mascotas</div>
+            <div class="label" (click)="OnClickConsulta()" (click)="setActiveLabel('Consultas')" [ngClass]="{'active': activeLabel === 'Consultas'}">Consultas</div>
+            <div class="label" (click)="OnClickMascota()" (click)="setActiveLabel('Mascotas')" [ngClass]="{'active': activeLabel === 'Mascotas'}">Mascotas</div>
         </div>
         <div class="container-option">
             <div class="option"><img src="/assets/carrito-compras.png" alt="carrito de compras"></div>

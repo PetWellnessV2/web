@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Consulta, ConsultasService } from '../../services/consultas.service';
+import { Consulta, ConsultasService, MascotaResponse } from '../../services/consultas.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-dueno',
@@ -8,7 +9,7 @@ import { Consulta, ConsultasService } from '../../services/consultas.service';
 })
 export class DuenoComponent implements OnInit {
   consultas: Consulta[] = [];
-
+  mascotas: MascotaResponse[] = [];
   constructor(private consultaService: ConsultasService) {}
 
   ngOnInit(): void {
@@ -16,10 +17,31 @@ export class DuenoComponent implements OnInit {
   }
 
   cargarConsultas(): void {
-    this.consultaService.obtenerConsultas().subscribe((data: Consulta[]) => {
-      this.consultas = data;
-      console.log(data);
-    });
+    // Obtener todas las mascotas del usuario logueado
+    this.consultaService.obtenerMascotasDetalle().subscribe(
+      (mascotas: MascotaResponse[]) => {
+        this.mascotas = mascotas;
+        
+        // Crear un array de observables de consultas para cada mascota
+        const consultasObservables = mascotas.map(mascota => 
+          this.consultaService.obtenerConsultasPorMascota(mascota.idMascota)
+        );
+
+        // Usar forkJoin para ejecutar todas las solicitudes de consultas en paralelo
+        forkJoin(consultasObservables).subscribe(
+          (consultasArray: Consulta[][]) => {
+            // Combinar todas las consultas en un solo array
+            this.consultas = consultasArray.flat();
+          },
+          error => {
+            console.error('Error al cargar las consultas de las mascotas:', error);
+          }
+        );
+      },
+      error => {
+        console.error('Error al cargar las mascotas del usuario:', error);
+      }
+    );
   }
 
   eliminarConsulta(id: number): void {

@@ -1,31 +1,42 @@
 <body id="Cuerpo">
-    <section id="Fondo">
-      <!-- Título principal -->
-      <div class="titulo">
-        <h1>Informe de salud</h1>
-      </div>
-  
-      <!-- Contenedor Combinado de Exámenes Físicos y Notas -->
-      <div class="detalles-adicionales">
-        <div class="contenido-scroll">
-          <div *ngFor="let examen of examenes; let i = index" class="detalle-item">
-            <p><strong>Informe {{i+1}}</strong></p>
+  <section id="Fondo">
+    <!-- Título principal -->
+    <div class="titulo">
+      <h1>Informe de salud</h1>
+    </div>
+
+    <!-- Contenedor Combinado de Exámenes Físicos y Notas -->
+    <div class="detalles-adicionales">
+      <div class="contenido-scroll">
+        
+        <!-- Mostrar Informes Completos (Examen Físico y Nota de Consulta en el mismo cuadro) -->
+        <div *ngFor="let examen of examenes; let i = index" class="detalle-item">
+          <h2>Informe Completo {{ i + 1 }}</h2>
+          
+          <!-- Examen Físico -->
+          <div class="examen-fisico">
             <p><strong>Presión Arterial:</strong> {{ examen.presionArterial }} mm Hg</p>
             <p><strong>Pulso:</strong> {{ examen.pulso }} latidos/minuto</p>
             <p><strong>Temperatura:</strong> {{ examen.temperatura }} °C</p>
             <p><strong>Peso:</strong> {{ examen.peso }} kg</p>
             <p><strong>Altura:</strong> {{ examen.altura }} m</p>
-  
-            <!-- Mostrar la fecha y descripción de la nota si existe -->
-            <ng-container *ngIf="notas[i]">
-              <p><strong>Fecha de la Nota:</strong> {{ notas[i].fecha }}</p>
-              <p><strong>Descripción de la Nota:</strong> {{ notas[i].descripcion }}</p>
-            </ng-container>
-            
-            <hr>
           </div>
+
+          <!-- Nota de Consulta (si existe una correspondiente) -->
+          <div class="nota-consulta" *ngIf="notas[i]">
+            <p><strong>Fecha de la Nota:</strong> {{ notas[i].fecha }}</p>
+            <p><strong>Descripción de la Nota:</strong> {{ notas[i].descripcion }}</p>
+          </div>
+          
+          <hr>
         </div>
+
+        <!-- Mensajes si no hay exámenes o notas -->
+        <div *ngIf="examenes.length === 0 && notas.length === 0">
+          <p>No hay informes disponibles para esta mascota.</p>
+        </div>
+        
       </div>
-    </section>
-  </body>
-  
+    </div>
+  </section>
+</body>
