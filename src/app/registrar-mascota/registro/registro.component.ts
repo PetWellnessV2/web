@@ -16,8 +16,7 @@ export class RegistroComponent {
   fechaNacimiento: string = '';
 
   especies = ['PERRO', 'GATO', 'CABALLO', 'CONEJO', 'AVE', 'REPTIL', 'ROEDOR'];
-  
-  // Mapa de razas organizadas por especie
+
   razasPorEspecie: { [key: string]: string[] } = {
       'PERRO': ['LABRADOR', 'BULLDOG', 'PASTOR_ALEMAN', 'BEAGLE', 'CHIHUAHUA'],
       'GATO': ['PERSA', 'SIAMES', 'MAINE_COON', 'BENGALA'],
@@ -41,8 +40,8 @@ export class RegistroComponent {
     if (usuarioId === null) {
         return;
       }
-      // Crear el objeto MascotaRegister con los datos del formulario
-      const nuevaMascota: MascotaRegister = {  // Esto será asignado por el backend
+
+      const nuevaMascota: MascotaRegister = {
           usuarioId: usuarioId,
           especie: this.especie,
           raza: this.raza,
@@ -52,7 +51,7 @@ export class RegistroComponent {
           fechaNacimiento: this.fechaNacimiento
       };
 
-      // Llamar al servicio para registrar la mascota
+      // Llamar al servicio para registrar la mascota :)
       this.consultasService.registrarMascota(nuevaMascota).subscribe(
           () => {
               alert('Mascota registrada con éxito');
