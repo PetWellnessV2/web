@@ -17,12 +17,16 @@ import { RegistrarMascotaModule } from './registrar-mascota/registrar-mascota.mo
 import { provideHttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { InformeMascotaComponent } from './informe-mascota/informe-mascota.component';
+import { MascotasDuenoComponent } from './mascotas-dueno/mascotas-dueno.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MascotasComponent,
-    PreparacionConsultaComponent
+    PreparacionConsultaComponent,
+    InformeMascotaComponent,
+    MascotasDuenoComponent
   ],
   imports: [
     HttpClientModule,

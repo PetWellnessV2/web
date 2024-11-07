@@ -1,4 +1,9 @@
-<footer>
-    Footer de Petwellnes
-    <a href="/">Inicio</a>
-</footer>
+<!-- footer.component.html -->
+<footer class="footer" *ngIf="isLoggedIn">
+    <div class="footer-left">
+      <img src="assets/Logo.png" alt="PetWellness Logo">
+    </div>
+    <div class="footer-center">
+      <p>&copy; 2024 PetWellness.</p>
+    </div>
+  </footer>

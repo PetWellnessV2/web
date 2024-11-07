@@ -1,0 +1,48 @@
+<body id="Cuerpo">
+    <section id="Fondo">
+      <!-- Sección para Registrar Informe -->
+      <div class="informe-consulta">
+        <div class="titulo">
+          <h1>Informe de la consulta</h1>
+        </div>
+        <div class="formulario">
+          <!-- Selección de Mascota -->
+          <label for="mascota">Mascota:</label>
+          <select id="mascota" class="input-field" [(ngModel)]="selectedMascotaId">
+            <option *ngFor="let mascota of mascotas" [value]="mascota.idMascota">{{ mascota.nombre }}</option>
+          </select>
+  
+          <!-- Razón de la consulta -->
+          <label for="razonConsulta">Razón de la consulta:</label>
+          <textarea id="razonConsulta" class="input-field" [(ngModel)]="razonConsulta" placeholder="Descripción de la consulta"></textarea>
+  
+          <button class="reservar-btn" (click)="registrarInforme()">Registrar informe</button>
+        </div>
+      </div>
+      
+      <!-- Sección de Examen Físico -->
+      <div class="examen-fisico">
+        <div class="titulo">
+          <h1>Examen físico</h1>
+        </div>
+        <div class="formulario">
+          <!-- Campos del Examen Físico -->
+          <label for="presionArterial">Presión arterial</label>
+          <input id="presionArterial" type="number" class="input-field" [(ngModel)]="presionArterial" placeholder="Presión arterial en mm Hg">
+  
+          <label for="pulso">Pulso</label>
+          <input id="pulso" type="number" class="input-field" [(ngModel)]="pulso" placeholder="Pulso en latidos por minuto">
+  
+          <label for="temperatura">Temperatura</label>
+          <input id="temperatura" type="number" class="input-field" [(ngModel)]="temperatura" placeholder="Temperatura">
+  
+          <label for="peso">Peso</label>
+          <input id="peso" type="number" class="input-field" [(ngModel)]="peso" placeholder="Peso en kilogramos">
+  
+          <label for="altura">Altura</label>
+          <input id="altura" type="number" class="input-field" [(ngModel)]="altura" placeholder="Altura en metros">
+        </div>
+      </div>
+    </section>
+  </body>
+  

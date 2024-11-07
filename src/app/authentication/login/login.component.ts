@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   constructor(private UsuarioService: UsuarioService) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, Validators.minLength(8)]]
     })
   }
 
@@ -47,13 +47,26 @@ export class LoginComponent implements OnInit, AfterViewInit {
           this.onLogin();
           alert('Usuario iniciado correctamente');
           console.log('Usuario iniciado correctamente');
-          this.showSnackBar('Usuario iniciado correctamente');
-          this.router.navigate(['/consults/consultas-duenio']);
+          //this.showSnackBar('Usuario iniciado correctamente');
+          switch (this.UsuarioService.GetUsuarioActivo()) {
+            case "Dueños": {
+              this.router.navigate(['/inicio-dueno']);
+              break;
+            }
+            case "Veterinario": {
+              this.router.navigate(['/inicio-vet']);
+              break;
+            }
+            case "Albergues": {
+      
+              break;
+            }
+          }
         },
         error: (error) => {
           alert('El correo o la contraseña son incorrectos');
           console.log('Usuario no iniciado correctamente');
-          this.showSnackBar(error.error.message);
+          //this.showSnackBar(error.error.message);
         }
       });
     }
