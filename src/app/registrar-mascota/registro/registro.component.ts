@@ -39,6 +39,7 @@ export class RegistroComponent {
     const usuarioId = this.authService.getUserId();
     if (usuarioId === null) {
         return;
+
       }
 
       const nuevaMascota: MascotaRegister = {
