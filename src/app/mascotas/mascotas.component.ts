@@ -17,7 +17,7 @@ export class MascotasComponent implements OnInit{
   }
 
   cargarMascotas(): void {
-    this.consultaService.obtenerMascotasDetalle().subscribe((data: MascotaResponse[]) => {
+    this.consultaService.obtenerMascotas().subscribe((data: MascotaResponse[]) => {
       this.mascotas = data;
       console.log(data);
     });

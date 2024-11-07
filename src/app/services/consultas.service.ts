@@ -122,9 +122,9 @@ export class ConsultasService {
     return this.http.get<MascotaResponse[]>(`${this.baseURL}/admin/registromascotas/${usuarioId}/mascotas`, { headers });
   }
 
-  obtenerMascotas(): Observable<Mascota[]> {
+  obtenerMascotas(): Observable<MascotaResponse[]> {
     const headers = this.getAuthHeaders();
-    return this.http.get<Mascota[]>(`${this.baseURL}/admin/registromascotas`, { headers });
+    return this.http.get<MascotaResponse[]>(`${this.baseURL}/admin/registromascotas`, { headers });
   }
 
   obtenerMascotasDetalle(): Observable<MascotaResponse[]> {
@@ -173,6 +173,10 @@ export class ConsultasService {
       return this.http.post<void>(`${this.baseURL}/notas-consulta`, notaConsulta, { headers });
     }
 
+    obtenerConsultasPorMascota(mascotaId: number): Observable<Consulta[]> {
+      const headers = this.getAuthHeaders();
+      return this.http.get<Consulta[]>(`${this.baseURL}/consultas/mascotas/${mascotaId}/consultas`, { headers });
+    }
 
   private getAuthHeaders(): HttpHeaders {
       const token = this.storageService.getAuthToken();

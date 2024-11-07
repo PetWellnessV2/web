@@ -22,7 +22,7 @@ export class ConsultasComponent implements OnInit {
     }
 
     cargarMascotas(): void {
-        this.consultaService.obtenerMascotas().subscribe((data: Mascota[]) => {
+        this.consultaService.obtenerMascotasDetalle().subscribe((data: Mascota[]) => {
             this.mascotas = data;
             console.log(this.mascotas);
         });
