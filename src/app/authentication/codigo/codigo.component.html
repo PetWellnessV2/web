@@ -1,24 +1,27 @@
 <body id="Cuerpo">
     <section id="Fondo">
-        <img src="./assets/Logo.png" alt="logo-Petwellness">
-        <h1>Verificación de seguridad</h1>
-        <h4>Ingrese el código enviado al correo electrónico</h4>
-        <div>
-        <div class="codigo">
-        <input type="text" required>
-        <input type="text" required>
-        <input type="text" required>
-        <input type="text" required>
-        </div>
+      <img src="./assets/Logo.png" alt="logo-Petwellness">
+      <h1>Verificación de seguridad</h1>
+      <h4>Ingrese el código enviado al correo electrónico</h4>
+      
+      <div class="codigo-container">
+        <input class="codigo" type="text" [(ngModel)]="token" (input)="onTokenChange($event)" required>
         <h4 class="Reenviar">Reenviar el código</h4>
-        </div>
-        <span> 
-            <input type="checkbox">
-            <h4>Preguntarme por la verificación de seguridad cada vez que inicio sesión.</h4>
-        </span>
-        <div class="botones">
+      </div>
+  
+      <div *ngIf="errorMessage" class="error-message">
+        <p>{{ errorMessage }}</p>
+      </div>
+  
+      <div class="verificacion">
+        <input type="checkbox">
+        <h4>Preguntarme por la verificación de seguridad cada vez que inicio sesión.</h4>
+      </div>
+  
+      <div class="botones">
         <button class="Cancelar" routerLink="/authentication/login">Cancelar</button>
-        <button class="Siguiente" routerLink="/authentication/cambiar-contrasena">Siguiente</button>
-        </div>
+        <button class="Siguiente" (click)="verifyToken()">Siguiente</button>  
+      </div>
     </section>
-</body>
+  </body>
+  
