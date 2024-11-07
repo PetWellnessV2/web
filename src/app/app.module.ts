@@ -42,7 +42,8 @@ import { MascotasDuenoComponent } from './mascotas-dueno/mascotas-dueno.componen
     HistorialModule,
     MeetingModule,
     ConsultsModule,
-    FormsModule
+    FormsModule,
+    InicioModule
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]
