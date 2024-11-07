@@ -176,6 +176,7 @@ export class ConsultasService {
   obtenerConsultasPorMascota(mascotaId: number): Observable<Consulta[]> {
     const headers = this.getAuthHeaders();
     return this.http.get<Consulta[]>(`${this.baseURL}/consultas/mascotas/${mascotaId}/consultas`, { headers });
+
   }
 
   private getAuthHeaders(): HttpHeaders {
