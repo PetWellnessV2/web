@@ -1,6 +1,7 @@
+import { UsuarioService } from './../../services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { UsuarioService } from '../../services/usuario.service';
+//import { UsuarioService } from '../../services/usuario.service';
 import { filter } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 
@@ -15,8 +16,7 @@ export class NavbarComponent implements OnInit {
   notificationCount: number = 0;
   activeLabel: string = 'Inicio';
   isLoggedIn = false;
-
-  constructor(private router: Router, private usuarioService: UsuarioService, private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router, private UsuarioService :UsuarioService, private usuarioService: UsuarioService) {}
 
   userRole: string = ''; 
 
@@ -45,12 +45,48 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogout(): void {
-    this.authService.logout_();  // Cambia el estado a no autenticado
+    this.authService.logout_();
     this.authService.logout();
-    this.router.navigate(['/authentication/login']);  // Redirige a la pantalla de login
+    this.router.navigate(['/authentication/login']);
   }
   setActiveLabel(label: string){
     this.activeLabel = label;
 
+  }
+  OnClickMascota(){
+    switch (this.UsuarioService.GetUsuarioActivo()) {
+      case "Dueños": {
+        console.log("Vista dueño mascota");
+        this.router.navigate(['/mascotas-dueno']);
+        break;
+      }
+      case "Veterinario": {
+        console.log("Vista vet mascota");
+        this.router.navigate(['/mascotas']);
+        break;
+      }
+      case "Albergues": {
+
+        break;
+      }
+    }
+  }
+  OnClickConsulta(){
+    switch (this.UsuarioService.GetUsuarioActivo()) {
+      case "Dueños": {
+        console.log("Vista dueño consulta");
+        this.router.navigate(['/consults/consultas-duenio']);
+        break;
+      }
+      case "Veterinario": {
+        console.log("Vista vet consulta");
+        this.router.navigate(['/consults/consultas-vet']);
+        break;
+      }
+      case "Albergues": {
+
+        break;
+      }
+    }
   }
 }

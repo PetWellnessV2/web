@@ -1,1 +1,41 @@
-<p>registro works!</p>
+<div id="Cuerpo">
+    <section id="Fondo">
+        <div class="registro-mascota">
+            <div class="titulo">
+                <h1>Registrar una mascota</h1>
+            </div>
+            <div class="formulario">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" class="input-field" [(ngModel)]="nombre" placeholder="Nombre">
+
+                <label for="especie">Especie:</label>
+                <select id="especie" class="input-field" [(ngModel)]="especie" (change)="actualizarRazas()">
+                    <option value="" disabled selected>Especie</option>
+                    <option *ngFor="let especie of especies" [value]="especie">{{ especie }}</option>
+                </select>
+
+                <label for="genero">Género:</label>
+                <select id="genero" class="input-field" [(ngModel)]="genero">
+                    <option value="" disabled selected>Género</option>
+                    <option value="MACHO">MACHO</option>
+                    <option value="HEMBRA">HEMBRA</option>
+                </select>
+
+                <label for="raza">Raza:</label>
+                <select id="raza" class="input-field" [(ngModel)]="raza">
+                    <option value="" disabled selected>Raza</option>
+                    <option *ngFor="let raza of razasDisponibles" [value]="raza">{{ raza }}</option>
+                </select>
+
+                <label for="edad">Edad:</label>
+                <input type="number" id="edad" class="input-field" [(ngModel)]="edad" placeholder="Edad">
+
+                <label for="fechaNacimiento">Fecha de nacimiento:</label>
+                <input type="date" id="fechaNacimiento" class="input-field" [(ngModel)]="fechaNacimiento">
+
+            </div>
+
+            <button class="registrar-btn" (click)="registrarMascota()">Registrar</button>
+        </div>
+    </section>
+</div>

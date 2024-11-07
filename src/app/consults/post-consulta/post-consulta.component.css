@@ -1,0 +1,81 @@
+.background {
+    background-color: #f0f0f0; /* Fondo gris claro */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 1200px; /* Limitar el tamaño máximo del contenedor */
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box; /* Incluir padding en el tamaño total del contenedor */
+  }
+  
+  .consultas-card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px; /* Limitar el tamaño máximo de la tarjeta */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-sizing: border-box; /* Incluir padding en el tamaño total de la tarjeta */
+  }
+  
+  h2 {
+    margin-top: 0;
+  }
+  
+  .opciones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .opciones h3 {
+    margin-top: 0;
+  }
+  
+  .opciones ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+  
+  .opciones ul li {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+  }
+  
+  .opciones ul li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .opciones ul li mat-icon {
+    margin-right: 10px;
+  }
+  
+  .saltar-paso {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #5CB4B5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .saltar-paso:hover {
+    background-color: #4ca0a1;
+  }
+  

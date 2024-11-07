@@ -1,0 +1,135 @@
+#Cuerpo {
+    zoom: 100%; 
+    min-height: 100vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: var(--fondo);
+    background-size: cover;
+}
+
+#Fondo {
+    margin: 25px 0;
+    width: 100%; 
+    max-width: 720px;
+    padding: 40px;
+    border-radius: 25px;
+    background: #FFF;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.Logo {
+    width: 187px;
+    height: 105px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Verificar h1 {
+    color: #0099B2;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.Verificar p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.input-container {
+    width: 100%;
+    margin-bottom: 20px; 
+}
+
+input {
+    width: 460px;
+    height: 60px;
+    border-radius: 25px;
+    font-family: 'Quicksand', sans-serif;
+    background: #F0F0F0;
+    border: 0;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid #0099B2;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    display: none;
+    margin-top: 5px;
+}
+
+.botones {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+button {
+    box-sizing: border-box;
+    display: flex;
+    width: 48%; 
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    border: 0;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #F0F0F0;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.Cancelar {
+    background-color: #D3EFF3;
+    color: #5CB4B5;
+}
+
+.Siguiente {
+    background-color: #0099B2;
+}
+
+button:hover {
+    background-color: #000;
+    opacity: 20%;
+}
+
+small {
+    color: red;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    position: relative;
+    left: 20px;
+    box-sizing: border-box;
+}
