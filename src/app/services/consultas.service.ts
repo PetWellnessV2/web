@@ -86,28 +86,28 @@ export class ConsultasService {
   private authService = inject(AuthService);
   obtenerConsultas(): Observable<Consulta[]> {
     const token = this.storageService.getAuthToken();
-    
-    const headers = token 
-        ? new HttpHeaders().set('Authorization', `Bearer ${token}`) 
-        : new HttpHeaders();
+
+    const headers = token
+      ? new HttpHeaders().set('Authorization', `Bearer ${token}`)
+      : new HttpHeaders();
 
     return this.http.get<Consulta[]>(`${this.baseURL}/consultas`, { headers });
   }
 
   eliminarConsulta(idConsulta: number): Observable<void> {
     const token = this.storageService.getAuthToken();
-    const headers = token 
-        ? new HttpHeaders().set('Authorization', `Bearer ${token}`) 
-        : new HttpHeaders();
+    const headers = token
+      ? new HttpHeaders().set('Authorization', `Bearer ${token}`)
+      : new HttpHeaders();
 
     return this.http.delete<void>(`${this.baseURL}/consultas/${idConsulta}`, { headers });
   }
 
   eliminarMasota(idConsulta: number): Observable<void> {
     const token = this.storageService.getAuthToken();
-    const headers = token 
-        ? new HttpHeaders().set('Authorization', `Bearer ${token}`) 
-        : new HttpHeaders();
+    const headers = token
+      ? new HttpHeaders().set('Authorization', `Bearer ${token}`)
+      : new HttpHeaders();
 
     return this.http.delete<void>(`${this.baseURL}/admin/registromascotas/${idConsulta}`, { headers });
   }
@@ -144,44 +144,44 @@ export class ConsultasService {
   }
 
   obtenerHorarios(): Observable<Horario[]> {
-      const headers = this.getAuthHeaders();
-      return this.http.get<Horario[]>(`${this.baseURL}/horarios-disponibles`, { headers });
-    }
+    const headers = this.getAuthHeaders();
+    return this.http.get<Horario[]>(`${this.baseURL}/horarios-disponibles`, { headers });
+  }
 
-    obtenerHorariosVet(vetid: number): Observable<Horario[]> {
-      const headers = this.getAuthHeaders();
-      return this.http.get<Horario[]>(`${this.baseURL}/horarios-disponibles/veterinario/${vetid}`, { headers });
-    }
+  obtenerHorariosVet(vetid: number): Observable<Horario[]> {
+    const headers = this.getAuthHeaders();
+    return this.http.get<Horario[]>(`${this.baseURL}/horarios-disponibles/veterinario/${vetid}`, { headers });
+  }
 
   registrarReserva(reserva: ReservaRequest): Observable<void> {
-      const headers = this.getAuthHeaders();
-      return this.http.post<void>(`${this.baseURL}/consultas`, reserva, { headers });
-    }
+    const headers = this.getAuthHeaders();
+    return this.http.post<void>(`${this.baseURL}/consultas`, reserva, { headers });
+  }
 
-    registrarInforme(informe: InformeRequest): Observable<void> {
-      const headers = this.getAuthHeaders();
-      return this.http.post<void>(`${this.baseURL}/examenes-fisicos`, informe, { headers });
-    }
+  registrarInforme(informe: InformeRequest): Observable<void> {
+    const headers = this.getAuthHeaders();
+    return this.http.post<void>(`${this.baseURL}/examenes-fisicos`, informe, { headers });
+  }
 
-    registrarMascota(mascota: MascotaRegister): Observable<void> {
-      const headers = this.getAuthHeaders();
-      return this.http.post<void>(`${this.baseURL}/admin/registromascotas`, mascota, { headers });
-    }
+  registrarMascota(mascota: MascotaRegister): Observable<void> {
+    const headers = this.getAuthHeaders();
+    return this.http.post<void>(`${this.baseURL}/admin/registromascotas`, mascota, { headers });
+  }
 
-    registrarNotaConsulta(notaConsulta: NotaConsultaRequest): Observable<void> {
-      const headers = this.getAuthHeaders();
-      return this.http.post<void>(`${this.baseURL}/notas-consulta`, notaConsulta, { headers });
-    }
+  registrarNotaConsulta(notaConsulta: NotaConsultaRequest): Observable<void> {
+    const headers = this.getAuthHeaders();
+    return this.http.post<void>(`${this.baseURL}/notas-consulta`, notaConsulta, { headers });
+  }
 
-    obtenerConsultasPorMascota(mascotaId: number): Observable<Consulta[]> {
-      const headers = this.getAuthHeaders();
-      return this.http.get<Consulta[]>(`${this.baseURL}/consultas/mascotas/${mascotaId}/consultas`, { headers });
-    }
+  obtenerConsultasPorMascota(mascotaId: number): Observable<Consulta[]> {
+    const headers = this.getAuthHeaders();
+    return this.http.get<Consulta[]>(`${this.baseURL}/consultas/mascotas/${mascotaId}/consultas`, { headers });
+  }
 
   private getAuthHeaders(): HttpHeaders {
-      const token = this.storageService.getAuthToken();
-      return token 
-          ? new HttpHeaders().set('Authorization', `Bearer ${token}`) 
-          : new HttpHeaders();
+    const token = this.storageService.getAuthToken();
+    return token
+      ? new HttpHeaders().set('Authorization', `Bearer ${token}`)
+      : new HttpHeaders();
   }
 }
