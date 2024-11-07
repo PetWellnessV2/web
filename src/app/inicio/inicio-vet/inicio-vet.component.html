@@ -61,13 +61,15 @@
               <div class="task-container">
                 <span class="icon"><img [src]="recordatorio.icon" alt="icon"></span>
                 <div class="task-details">
-                  <p>{{ recordatorio.name }}</p>
+                  <p>{{ recordatorio.title }}</p>
                   <time>{{ recordatorio.time }}</time>
                 </div>
-                <button class="delete-btn" (click)="deleteReminder(recordatorio)">🗑️</button>
+                <!-- Cambié el evento (click) para pasar solo el ID del recordatorio -->
+                <button class="delete-btn" (click)="deleteReminder(recordatorio.id)">🗑️</button>
               </div>
             </li>
           </ul>
+          
         </section>  
         <!-- Proximos Pacientes -->      
         <section class="dashboard-item proximo-paciente">
