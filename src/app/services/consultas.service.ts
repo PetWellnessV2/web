@@ -103,13 +103,13 @@ export class ConsultasService {
     return this.http.delete<void>(`${this.baseURL}/consultas/${idConsulta}`, { headers });
   }
 
-  eliminarMasota(idConsulta: number): Observable<void> {
+  eliminarMasota(idConsulta:number):Observable<void>{
     const token = this.storageService.getAuthToken();
     const headers = token
       ? new HttpHeaders().set('Authorization', `Bearer ${token}`)
       : new HttpHeaders();
-
     return this.http.delete<void>(`${this.baseURL}/admin/registromascotas/${idConsulta}`, { headers });
+
   }
 
   obtenerMascotasUsuario(): Observable<MascotaResponse[]> {
@@ -118,7 +118,6 @@ export class ConsultasService {
       throw new Error('Usuario no autenticado');
     }
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    // Incluye el usuarioId como un parámetro en la URL
     return this.http.get<MascotaResponse[]>(`${this.baseURL}/admin/registromascotas/${usuarioId}/mascotas`, { headers });
   }
 
