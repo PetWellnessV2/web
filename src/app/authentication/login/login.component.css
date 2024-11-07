@@ -146,3 +146,16 @@ span {
     background-color: #000;
     padding: 0;
 }
+
+.error {
+    color: #FF3561;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Quicksand', sans-serif;
+    font-style: italic;
+    margin: 0;
+    padding: 0;
+    padding-top: 5%;
+    padding-left: 5%;
+
+}

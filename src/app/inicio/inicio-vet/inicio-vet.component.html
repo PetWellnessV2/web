@@ -1,1 +1,78 @@
-<p>inicio-vet works!</p>
+<div class="homevet">
+    <header>
+      <h1>Bienvenido <span>Dr. Jose</span></h1>
+    </header>
+    <main>
+      <div class="dashboard">
+        <section class="dashboard-item general-tareas">
+            <div class="tareas-de-hoy">
+                <app-tareas></app-tareas>           
+            </div>
+        </section>                
+        <!-- Mascotas -->
+        <div class="dashboard-item mascotas">
+            <app-animales></app-animales>
+        </div>         
+        <!-- Recordatorios -->      
+        <section class="dashboard-item calendar">
+          <div class="calendar-header">
+            <div class="month-year-selection">
+              <div (click)="toggleMonthDropdown()" class="dropdown">
+                <span>{{ currentMonth }}</span>
+                <span class="dropdown-icon">▼</span>
+                <div *ngIf="showMonthDropdown" class="month-dropdown">
+                  <ul>
+                    <li *ngFor="let month of months; let i = index" (click)="selectMonth(i)">
+                      {{ month }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div (click)="toggleYearDropdown()" class="dropdown">
+                <span>{{ currentYear }}</span>
+                <span class="dropdown-icon">▼</span>
+                <div *ngIf="showYearDropdown" class="year-dropdown">
+                  <ul>
+                    <li *ngFor="let year of years" (click)="selectYear(year)">
+                      {{ year }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <button class="add-reminder" (click)="goToAddReminder()">+ Add recordatorio</button>            
+          </div>             
+          <div class="calendar-navigation">
+            <span class="prev" (click)="prev()">&lt;</span>
+            <div class="dates-container">
+              <ul class="dates">
+                <li *ngFor="let item of daysAndDates; let i = index"
+                    [class.active]="i === activeIndex"
+                    (click)="setActiveDay(i)">
+                  <span class="day">{{ item.day }}</span>
+                  <span class="date">{{ item.date }}</span>
+                </li>
+              </ul>
+            </div>
+            <span class="next" (click)="next()">&gt;</span>
+          </div>                                      
+          <ul class="appointments">
+            <li *ngFor="let recordatorio of recordatorios">
+              <div class="task-container">
+                <span class="icon"><img [src]="recordatorio.icon" alt="icon"></span>
+                <div class="task-details">
+                  <p>{{ recordatorio.name }}</p>
+                  <time>{{ recordatorio.time }}</time>
+                </div>
+                <button class="delete-btn" (click)="deleteReminder(recordatorio)">🗑️</button>
+              </div>
+            </li>
+          </ul>
+        </section>  
+        <!-- Proximos Pacientes -->      
+        <section class="dashboard-item proximo-paciente">
+          <app-prox-pacientes></app-prox-pacientes>           
+        </section>
+      </div>
+    </main>
+</div>

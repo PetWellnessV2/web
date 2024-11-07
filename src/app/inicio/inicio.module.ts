@@ -10,6 +10,7 @@ import { InicioDuenoComponent } from './inicio-dueno/inicio-dueno.component';
 import { InicioVetComponent } from './inicio-vet/inicio-vet.component';
 import { ProxConsultasComponent } from './prox-consultas/prox-consultas.component';
 import { ProxPacientesComponent } from './prox-pacientes/prox-pacientes.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ProxPacientesComponent } from './prox-pacientes/prox-pacientes.componen
   ],
   imports: [
     CommonModule,
-    InicioRoutingModule
+    InicioRoutingModule,
+    FormsModule
   ]
 })
 export class InicioModule { }
