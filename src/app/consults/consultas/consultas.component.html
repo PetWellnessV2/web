@@ -1,69 +1,91 @@
 <body id="Cuerpo">
-    <section id="Fondo">
-        <!-- Sección para Reservar Consulta -->
-        <div class="reserva-consulta">
-            <div class="titulo">
-                <h1>Reservar consulta</h1>
-            </div>
-            <div class="formulario">
-                <label for="mascota">Mascota:</label>
-                <select id="mascota" class="input-field" [(ngModel)]="selectedMascotaId">
-                    <option *ngFor="let mascota of mascotas" [value]="mascota.idMascota">{{ mascota.nombre }}</option>
-                </select>
+<section id="Fondo">
+  <!-- Sección para Reservar Consulta -->
+  <div class="reserva-consulta">
+    <div class="titulo">
+      <h1>Reservar consulta</h1>
+    </div>
+    <div class="formulario">
+      <label for="mascota">Mascota:</label>
+      <select id="mascota" class="input-field" [(ngModel)]="selectedMascotaId">
+        <option *ngFor="let mascota of mascotas" [value]="mascota.idMascota">{{ mascota.nombre }}</option>
+      </select>
 
-                <label for="tipoConsulta">Tipo de consulta:</label>
-                <select [(ngModel)]="tipoConsulta" id="tipoConsulta" class="input-field" placeholder="Tipo de consulta">
-                    <option value="REVISION_GENERAL">Revisión general</option>
-                    <option value="URGENCIA">Urgencia</option>
-                    <option value="SEGUIMIENTO">Seguimiento</option>
-                    <option value="VACUNA">Vacuna</option>
-                </select>
+      <label for="tipoConsulta">Tipo de consulta:</label>
+      <select [(ngModel)]="tipoConsulta" id="tipoConsulta" class="input-field">
+        <option value="REVISION_GENERAL">Revisión general</option>
+        <option value="URGENCIA">Urgencia</option>
+        <option value="SEGUIMIENTO">Seguimiento</option>
+        <option value="VACUNA">Vacuna</option>
+      </select>
 
-                <label for="razonConsulta">Razón de la consulta:</label>
-                <textarea id="razonConsulta" class="input-field" [(ngModel)]="razonConsulta" placeholder="Descripción de la consulta"></textarea>
-            
-                <button class="reservar-btn" (click)="registrarConsulta()">Reservar</button>
-            </div>
+      <label for="razonConsulta">Razón de la consulta:</label>
+      <textarea id="razonConsulta" class="input-field" [(ngModel)]="razonConsulta" placeholder="Descripción de la consulta"></textarea>
+
+      <button class="reservar-btn" (click)="registrarConsulta()">Reservar</button>
+    </div>
+  </div>
+
+  <!-- Sección de Horarios Disponibles -->
+  <div class="horarios-disponibles">
+    <div class="titulo">
+      <h1>Horarios disponibles</h1>
+    </div>
+    <div class="calendar-header">
+      <div class="month-year-selection">
+        <div (click)="toggleMonthDropdown()" class="dropdown">
+          <span>{{ currentMonth }}</span>
+          <span class="dropdown-icon">▼</span>
+          <div *ngIf="showMonthDropdown" class="month-dropdown">
+            <ul>
+              <li *ngFor="let month of months; let i = index" (click)="selectMonth(i)">
+                {{ month }}
+              </li>
+            </ul>
+          </div>
         </div>
-        
-        <!-- Sección de Horarios Disponibles -->
-        <div class="horarios-disponibles">
-            <div class="titulo">
-                <h1>Horarios disponibles</h1>
-            </div>
-            <div class="calendario">
-                <div class="mes">Abril 2024 <span class="arrow">&#9660;</span></div>
-                <div class="dias-semana">
-                    <div>Lun</div>
-                    <div>Mar</div>
-                    <div>Mié</div>
-                    <div>Jue</div>
-                    <div>Vie</div>
-                    <div>Sáb</div>
-                    <div>Dom</div>
-                </div>
-                <div class="fechas">
-                    <div>9</div>
-                    <div>10</div>
-                    <div class="active">11</div> <!-- Fecha seleccionada -->
-                    <div>12</div>
-                    <div>13</div>
-                    <div>14</div>
-                    <div>15</div>
-                </div>
-            </div>
-            <div class="horarios-lista">
-                <div *ngFor="let horario of horarios" 
-                     class="horario" 
-                     (click)="seleccionarHorario(horario.idHorario)" 
-                     [class.selected]="horario.idHorario === selectedHorarioId">
-                    <span class="veterinario">{{ horario.veterinario_nombre }}</span>
-                    <div class="hora-fecha">
-                        <span class="hora">{{ horario.hora }}</span>
-                        <span class="fecha">{{ horario.fecha }}</span>
-                    </div>
-                </div>
-            </div>                       
+        <div (click)="toggleYearDropdown()" class="dropdown">
+          <span>{{ currentYear }}</span>
+          <span class="dropdown-icon">▼</span>
+          <div *ngIf="showYearDropdown" class="year-dropdown">
+            <ul>
+              <li *ngFor="let year of years" (click)="selectYear(year)">
+                {{ year }}
+              </li>
+            </ul>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+
+    <div class="calendar-navigation">
+      <span class="prev" (click)="prev()">&lt;</span>
+      <div class="dates-container">
+        <ul class="dates">
+          <li *ngFor="let item of daysAndDates; let i = index"
+              [class.active]="i === activeIndex"
+              (click)="setActiveDay(i)">
+            <span class="day">{{ item.day }}</span>
+            <span class="date">{{ item.date }}</span>
+          </li>
+        </ul>
+      </div>
+      <span class="next" (click)="next()">&gt;</span>
+    </div>
+
+    <!-- Lista de Horarios -->
+    <div class="horarios-lista">
+      <div *ngFor="let horario of horarios"
+           class="horario"
+           (click)="seleccionarHorario(horario.idHorario)"
+           [class.selected]="horario.idHorario === selectedHorarioId">
+        <span class="veterinario">{{ horario.veterinario_nombre }}</span>
+        <div class="hora-fecha">
+          <span class="hora">{{ horario.hora }}</span>
+          <span class="fecha">{{ horario.fecha }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 </body>
