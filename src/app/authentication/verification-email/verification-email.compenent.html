@@ -1,0 +1,39 @@
+<body id="Cuerpo">
+    <section id="Fondo">
+      <div class="Verificar">
+        <img src="./assets/Logo.png" alt="Logo Petwellness" class="Logo">
+        <h1>Recuperación de Contraseña</h1>
+        <p>Ingrese su correo electrónico para continuar</p>
+      </div>
+  
+      <form action="/authentication/verificacion" method="POST">
+        <section>
+          <div class="input-container">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Correo electrónico"
+              [(ngModel)]="email"
+              (input)="onEmailChange($event)"
+              required
+            />
+            <small id="email-error" class="error-message">Por favor ingrese un correo válido</small>
+          </div>
+        </section>
+  
+        <div class="botones">
+          <button type="button" class="Cancelar" routerLink="/authentication/login">Cancelar</button>
+          <button
+            type="submit"
+            class="Siguiente"
+            [disabled]="!emailValido"
+            routerLink="/authentication/verificacion"
+          >
+            Siguiente
+          </button>
+        </div>
+      </form>
+    </section>
+  </body>
+  
