@@ -60,7 +60,7 @@ export class CambiarContrasenaComponent implements OnInit, AfterViewInit {
       }
     }
   }
-
+//
   OcultarContrasena() {
     const Contrasena_1 = document.getElementById("Ver-contrasena_1") as HTMLInputElement;
     const Contrasena_2 = document.getElementById("Ver-contrasena_2") as HTMLInputElement;
@@ -77,8 +77,6 @@ export class CambiarContrasenaComponent implements OnInit, AfterViewInit {
 
     return !this.VerContrasena && !this.VerContrasenaDiferente;
   }
-
-   //
 
   isFormValid(): boolean {
     return this.ValidarFormulario();
