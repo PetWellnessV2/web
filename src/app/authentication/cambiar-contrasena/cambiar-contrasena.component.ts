@@ -78,6 +78,8 @@ export class CambiarContrasenaComponent implements OnInit, AfterViewInit {
     return !this.VerContrasena && !this.VerContrasenaDiferente;
   }
 
+   //
+
   isFormValid(): boolean {
     return this.ValidarFormulario();
   }
