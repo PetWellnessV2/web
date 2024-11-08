@@ -9,9 +9,9 @@
       <ul class="reminders-list">
         <li *ngFor="let reminder of reminders">
           <div class="reminder-item">
-            <div class="icon-container">
-              <img [src]="reminder.icon" alt="icon">
-            </div>
+            <span class="icon material-icons">
+              {{ getIcon(reminder.type) }}
+            </span>
             <div class="reminder-details">
               <p class="title">{{ reminder.title }}</p>
               <p class="description">{{ reminder.description }}</p>

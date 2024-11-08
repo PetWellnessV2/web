@@ -1,25 +1,29 @@
 <div>
-    <main>
-        <div class="tareas-de-hoy">
-            <div class="header">
-              <h2>Tareas de Hoy</h2>
-              <span class="task-count">{{ tasksvet.length }}</span>
-            </div>
-            <ul class="tasks">
-              <li *ngFor="let tarea of tasksvet">
-                <div class="task-container">
-                  <span class="icon"><img [src]="tarea.icon" alt="icon"></span>
-                  <div class="task-details">
-                    <p>{{ tarea.name }}</p>
-                    <time>{{ tarea.time }}</time>
-                  </div>
-                  <span class="external-link"><img [src]="tarea.linkicon" alt="link icon"></span>
-                </div>
-              </li>
-            </ul>            
-            <div class="ver-mas-container">
-              <button class="ver-mas">Ver más</button>
-            </div>            
+  <main>
+      <div class="tareas-de-hoy">
+          <div class="header">
+            <h2>Tareas de Hoy</h2>
+            <span class="task-count">{{ tasksvet.length }}</span>
           </div>
-    </main>
+          <ul class="tasks">
+            <li *ngFor="let tarea of tasksvet">
+              <div class="task-container">
+                <span class="icon">
+                  <span class="material-icons">{{ tarea.icon }}</span> 
+                </span>
+                <div class="task-details">
+                  <p>{{ tarea.name }}</p>
+                  <time>{{ tarea.time }}</time>
+                </div>
+                <span class="external-link">
+                  <span class="external-link"><img [src]="tarea.linkicon" alt="link icon"></span> 
+                </span>
+              </div>
+            </li>
+          </ul>            
+          <div class="ver-mas-container">
+            <button class="ver-mas">Ver más</button>
+          </div>            
+        </div>
+  </main>
 </div>

@@ -1,9 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Recordatorio, RecordatoriosService } from '../services/recordatorios.service';
+import { RecordatoriosService } from '../services/recordatorios.service';
 import { RecordatorioRequest } from '../models/recordatorio.request.model';
 import { ConsultasService, MascotaResponse } from '../../services/consultas.service';
+
+interface Recordatorio {
+  id: number;
+  title: string;
+  description: string;
+  date: string; // formato YYYY-MM-DD
+  time: string; // formato HH:mm
+  type: string;
+  status: string;
+  icon?: string;
+}
 
 @Component({
   selector: 'app-inicio-vet',
@@ -18,49 +29,50 @@ export class InicioVetComponent implements OnInit {
   currentStartDate: Date = new Date();
   showMonthDropdown: boolean = false; 
   showYearDropdown: boolean = false;
-  mascotas: MascotaResponse[] = [];
   months: string[] = [
     'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
   ];
   years: number[] = [];
-  recordatorios: Recordatorio[] = []; 
-
+  recordatorios: Recordatorio[] = [
+    { id: 1, title: 'Vacunación Anual', description: 'Para Firulais', date: '2024-11-07', time: '09:00', type: 'vacunación', status: 'CREADO', icon: 'assets/icons/vacunacion.png' },
+    { id: 2, title: 'Consulta de Revisión', description: 'Con Luna', date: '2024-11-07', time: '11:00', type: 'consulta', status: 'EN_PROCESO', icon: 'assets/icons/consulta.png' },
+    { id: 3, title: 'Alimentación Especial', description: 'Para Chewbacca', date: '2024-11-08', time: '08:00', type: 'alimentación', status: 'CREADO', icon: 'assets/icons/alimentacion.png' }
+  ];
+  filteredRecordatorios: Recordatorio[] = [];  
+  mascotas: MascotaResponse[] = [];
+  
   constructor(
     public dialog: MatDialog, 
     private router: Router, 
-    private recordatoriosService: RecordatoriosService,
-    private consultasService: ConsultasService
+    private consultasService : ConsultasService
   ) {
     this.initializeCalendar(new Date());
     this.populateYears();
-
   }
 
   ngOnInit() {
-    this.loadRecordatorios();
+    this.filterRecordatoriosByDate(this.currentStartDate);
     this.cargarMascotas();
   }
-
+  
   cargarMascotas(): void {
-    this.consultasService.obtenerMascotas().subscribe((data: MascotaResponse[]) => {
+    this.consultasService.obtenerMascotasDetalle().subscribe((data: MascotaResponse[]) => {
       this.mascotas = data;
       console.log(data);
     });
   }
 
-  loadRecordatorios() {
-    this.recordatoriosService.obtenerRecordatorios().subscribe(
-      (recordatorios) => this.recordatorios = recordatorios,
-      (error) => console.error('Error al cargar recordatorios:', error)
-    );
+  filterRecordatoriosByDate(date: Date): void {
+    const selectedDate = date.toISOString().split('T')[0]; 
+    this.filteredRecordatorios = this.recordatorios
+      .filter(recordatorio => recordatorio.date === selectedDate)
+      .sort((a, b) => a.time.localeCompare(b.time)); 
   }
 
-  deleteReminder(id: number) {
-    this.recordatoriosService.eliminarRecordatorio(id).subscribe(
-      () => this.loadRecordatorios(), // Recarga los recordatorios después de eliminar uno
-      (error) => console.error('Error al eliminar recordatorio:', error)
-    );
+  deleteReminder(id: number): void {
+    this.recordatorios = this.recordatorios.filter(recordatorio => recordatorio.id !== id);
+    this.filterRecordatoriosByDate(this.daysAndDates[this.activeIndex].fullDate);
   }
 
   initializeCalendar(startDate: Date): void {
@@ -69,6 +81,7 @@ export class InicioVetComponent implements OnInit {
     this.currentYear = startDate.getFullYear();
     this.generateWeek(startDate);
     this.setDefaultActiveDay();
+    this.filterRecordatoriosByDate(this.daysAndDates[this.activeIndex].fullDate); 
   }
 
   toggleMonthDropdown(): void {
@@ -109,33 +122,46 @@ export class InicioVetComponent implements OnInit {
       return {
         day: daysOfWeek[date.getDay()],
         date: date.getDate(),
-        fullDate: date
+        fullDate: new Date(date.getFullYear(), date.getMonth(), date.getDate()) 
       };
     });
   }
 
   private setDefaultActiveDay(): void {
     this.activeIndex = 0;
+    this.filterRecordatoriosByDate(this.daysAndDates[this.activeIndex].fullDate); 
   }
 
   setActiveDay(index: number): void {
     this.activeIndex = index;
+    const selectedDate = this.daysAndDates[index].fullDate;
+    this.filterRecordatoriosByDate(selectedDate); 
   }
 
   prev(): void {
     const newStartDate = new Date(this.currentStartDate);
-    newStartDate.setDate(this.currentStartDate.getDate() - 1);
+    newStartDate.setDate(this.currentStartDate.getDate() - 7);
     this.initializeCalendar(newStartDate);
   }
 
   next(): void {
     const newStartDate = new Date(this.currentStartDate);
-    newStartDate.setDate(this.currentStartDate.getDate() + 1);
+    newStartDate.setDate(this.currentStartDate.getDate() + 7);
     this.initializeCalendar(newStartDate);
   }
 
   goToAddReminder() {
     this.router.navigate(['/add-reminder']);
   }
+
+  getIcon(type: string): string {
+    switch (type) {
+      case 'vacunación': return 'vaccines'; // Ícono para vacunación
+      case 'consulta': return 'medical_services'; // Ícono para consulta médica
+      case 'alimentación': return 'restaurant'; // Ícono para alimentación
+      default: return 'event'; // Ícono predeterminado para otros tipos
+    }
+  }
+  
 
 }

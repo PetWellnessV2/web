@@ -65,14 +65,16 @@
             <span class="next" (click)="next()">&gt;</span>
           </div>                                       
           <ul class="appointments">
-            <li *ngFor="let recordatorio of recordatorios">
+            <li *ngFor="let recordatorio of filteredRecordatorios">
               <div class="task-container">
-                <span class="icon"><img [src]="recordatorio.icon" alt="icon"></span>
+                <!-- Ícono basado en el tipo de recordatorio -->
+                <span class="icon material-icons">
+                  {{ getIcon(recordatorio.type) }}
+                </span>
                 <div class="task-details">
                   <p>{{ recordatorio.title }}</p>
                   <time>{{ recordatorio.time }}</time>
                 </div>
-                <!-- Cambié el evento (click) para pasar solo el ID del recordatorio -->
                 <button class="delete-btn" (click)="deleteReminder(recordatorio.id)">🗑️</button>
               </div>
             </li>
