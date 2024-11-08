@@ -1,8 +1,10 @@
+import { ConsultasService, MascotaResponse } from './../../services/consultas.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Recordatorio, RecordatoriosService } from '../services/recordatorios.service';
 import { RecordatorioRequest } from '../models/recordatorio.request.model';
+
 
 @Component({
   selector: 'app-inicio-dueno',
@@ -23,11 +25,12 @@ export class InicioDuenoComponent implements OnInit {
   ];
   years: number[] = [];
   recordatorios: Recordatorio[] = []; // Cambié el tipo a Recordatorio para que coincida con el servicio
-
+  mascotas: MascotaResponse[] = [];
   constructor(
     public dialog: MatDialog, 
     private router: Router, 
-    private recordatoriosService: RecordatoriosService
+    private recordatoriosService: RecordatoriosService,
+    private consultasService : ConsultasService
   ) {
     this.initializeCalendar(new Date());
     this.populateYears();
@@ -35,6 +38,13 @@ export class InicioDuenoComponent implements OnInit {
 
   ngOnInit() {
     this.loadRecordatorios();
+    this.cargarMascotas();
+  }
+  cargarMascotas(): void {
+    this.consultasService.obtenerMascotasDetalle().subscribe((data: MascotaResponse[]) => {
+      this.mascotas = data;
+      console.log(data);
+    });
   }
 
   loadRecordatorios() {

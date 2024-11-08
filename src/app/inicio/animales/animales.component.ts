@@ -1,34 +1,23 @@
-import { MascotaResponse } from '../models/mascota-response.model';
-import { MascotasService } from '../services/mascotas.service';
-import { Component } from '@angular/core';
-interface Mascotas {
-  img: string;
-  nombre: string;
-  fecha: string;
-  hora: string;
-}
+import { ConsultasService, MascotaResponse } from './../../services/consultas.service';
+import { Component, OnInit } from '@angular/core';
+
 @Component({
   selector: 'app-animales',
   templateUrl: './animales.component.html',
-  styleUrl: './animales.component.css'
+  styleUrls: ['./animales.component.css']
 })
-export class AnimalesComponent {
-  mascotasdueno: Mascotas[] = [];
+export class AnimalesComponent implements OnInit {
+  mascotasdueno: MascotaResponse[] = [];
 
-  constructor(private MascotasService: MascotasService) { }
+  constructor(private ConsultasService: ConsultasService) { }
 
   ngOnInit() {
-    this.loadConsultas();
+    this.loadMascotas();
   }
 
-  loadConsultas() {
-    this.MascotasService.getCMascotas().subscribe(data => {
-      this.mascotasdueno = data.map(MascotaResponse => ({
-        img: MascotaResponse.img,
-        nombre: MascotaResponse.nombre,
-        fecha: MascotaResponse.fecha,
-        hora: MascotaResponse.hora
-      }));
+  loadMascotas() {
+    this.ConsultasService.obtenerMascotasUsuario().subscribe((data: MascotaResponse[]) => {
+      this.mascotasdueno = data;
     });
   }
 }

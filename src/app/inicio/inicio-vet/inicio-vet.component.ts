@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Recordatorio, RecordatoriosService } from '../services/recordatorios.service';
 import { RecordatorioRequest } from '../models/recordatorio.request.model';
+import { ConsultasService, MascotaResponse } from '../../services/consultas.service';
 
 @Component({
   selector: 'app-inicio-vet',
@@ -17,6 +18,7 @@ export class InicioVetComponent implements OnInit {
   currentStartDate: Date = new Date();
   showMonthDropdown: boolean = false; 
   showYearDropdown: boolean = false;
+  mascotas: MascotaResponse[] = [];
   months: string[] = [
     'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
@@ -27,14 +29,24 @@ export class InicioVetComponent implements OnInit {
   constructor(
     public dialog: MatDialog, 
     private router: Router, 
-    private recordatoriosService: RecordatoriosService
+    private recordatoriosService: RecordatoriosService,
+    private consultasService: ConsultasService
   ) {
     this.initializeCalendar(new Date());
     this.populateYears();
+
   }
 
   ngOnInit() {
     this.loadRecordatorios();
+    this.cargarMascotas();
+  }
+
+  cargarMascotas(): void {
+    this.consultasService.obtenerMascotas().subscribe((data: MascotaResponse[]) => {
+      this.mascotas = data;
+      console.log(data);
+    });
   }
 
   loadRecordatorios() {

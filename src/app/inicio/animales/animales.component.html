@@ -1,19 +1,25 @@
 <div>
-    <main>
-        <div class="dashboard">
-            <section class="dashboard-item mascotas">
-                <h2>Mascotas</h2>
-                <div class="mascotas-list">
-                  <div class="mascotas-card" *ngFor="let mascota of mascotasdueno">
-                    <img [src]="mascota.img" [alt]="mascota.nombre">
-                    <div class="appointment-details">
-                      <p>{{ mascota.nombre }}</p>
-                      <time>{{ mascota.fecha }} | {{ mascota.hora }}</time>
-                    </div>
-                    <button>Historial Clínico</button>
-                  </div>
-                </div>
-            </section>
+  <main>
+    <div class="dashboard">
+      <section class="dashboard-item mascotas">
+        <h2>Mascotas</h2>
+        <div class="mascotas-list">
+          <!-- Se usa el *ngFor para recorrer el arreglo de mascotas -->
+          <div class="mascotas-card" *ngFor="let mascota of mascotasdueno">
+            <!-- Mostrar una imagen genérica o específica si tienes la URL -->
+            <img src="ruta/de/imagen/default.jpg" alt="{{ mascota.nombre }}">
+            <div class="appointment-details">
+              <!-- Mostrar los datos específicos de la mascota -->
+              <p>Nombre: {{ mascota.nombre }}</p>
+              <p>Especie: {{ mascota.especie }}</p>
+              <p>Género: {{ mascota.genero }}</p>
+              <p>Raza: {{ mascota.raza }}</p>
+              <p>Edad: {{ mascota.edad }} años</p>
+            </div>
+            <button>Historial Clínico</button>
+          </div>
         </div>
-    </main>
+      </section>
+    </div>
+  </main>
 </div>
