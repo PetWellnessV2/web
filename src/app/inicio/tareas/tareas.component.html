@@ -1,29 +1,23 @@
 <div>
-  <main>
-      <div class="tareas-de-hoy">
-          <div class="header">
-            <h2>Tareas de Hoy</h2>
-            <span class="task-count">{{ tasksvet.length }}</span>
-          </div>
-          <ul class="tasks">
-            <li *ngFor="let tarea of tasksvet">
-              <div class="task-container">
-                <span class="icon">
-                  <span class="material-icons">{{ tarea.icon }}</span> 
-                </span>
-                <div class="task-details">
-                  <p>{{ tarea.name }}</p>
-                  <time>{{ tarea.time }}</time>
-                </div>
-                <span class="external-link">
-                  <span class="external-link"><img [src]="tarea.linkicon" alt="link icon"></span> 
-                </span>
-              </div>
-            </li>
-          </ul>            
-          <div class="ver-mas-container">
-            <button class="ver-mas">Ver más</button>
-          </div>            
-        </div>
-  </main>
+  <header>
+    <h2>Tus Estadísticas</h2>
+  </header>
+  <div class="container">
+    <!-- Conteo por especie -->
+    <div class="species-count">
+      <h3>Mascotas atendidas</h3>
+      <ul>
+        <li>🐶 Perros: {{ totalPerros }}</li>
+        <li>🐱 Gatos: {{ totalGatos }}</li>
+      </ul>
+    </div>
+
+    <!-- Consultas realizadas -->
+    <div class="statistics">
+      <h3>Consultas Realizadas</h3>
+      <p>📋 Total Consultas: {{ consultas.length }}</p>
+      <p>⏳ Consultas Pendientes: {{ consultasPendientes }}</p>
+      <p>✅ Consultas Completadas: {{ consultasCompletadas }}</p>
+    </div>
+  </div>
 </div>

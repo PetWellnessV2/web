@@ -33,4 +33,7 @@ export class VeterinarioComponent implements OnInit {
         console.error("Error eliminando la consulta:", error);
     });
 }
+  getConsultaClass(estado: string): string {
+    return estado === 'PENDIENTE' ? 'pendiente' : 'completado';
+  }
 }
