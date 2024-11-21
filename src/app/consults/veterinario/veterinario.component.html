@@ -4,7 +4,7 @@
             <h1>Consultas</h1>
         </div>
         <div class="consultas">
-            <div *ngFor="let consulta of consultas" class="consulta">
+            <div *ngFor="let consulta of consultas" class="consulta" [ngClass]="getConsultaClass(consulta.estadoConsulta)">
                 <h2>Nombre de la mascota: {{ consulta.nombre_mascota }}</h2>
                 <p>Tipo de consulta: {{ consulta.tipoConsulta }}</p>
                 <p>Estado de la consulta: {{ consulta.estadoConsulta }}</p>
@@ -12,7 +12,7 @@
                 <p>Hora: {{ consulta.hora }}</p>
                 <p>Razón de la consulta: {{ consulta.razonConsulta }}</p>
                 <button class="btn-consultas" routerLink="/consults/consultas-vet-post">Ingresar a la consulta</button>
-            </div>
+            </div>            
         </div>
     </section>
 </body>
