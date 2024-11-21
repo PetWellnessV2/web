@@ -1,27 +1,19 @@
 <body id="Cuerpo">
-    <section id="Fondo">
-      <img src="./assets/Logo.png" alt="logo-Petwellness">
-      <h1>Verificación de seguridad</h1>
-      <h4>Ingrese el código enviado al correo electrónico</h4>
-      
-      <div class="codigo-container">
-        <input class="codigo" type="text" [(ngModel)]="token" (input)="onTokenChange($event)" required>
-        <h4 class="Reenviar">Reenviar el código</h4>
-      </div>
-  
-      <div *ngIf="errorMessage" class="error-message">
-        <p>{{ errorMessage }}</p>
-      </div>
-  
-      <div class="verificacion">
-        <input type="checkbox">
-        <h4>Preguntarme por la verificación de seguridad cada vez que inicio sesión.</h4>
-      </div>
-  
-      <div class="botones">
-        <button class="Cancelar" routerLink="/authentication/login" style="cursor: pointer;">Cancelar</button>
-        <button class="Siguiente" (click)="verifyToken()" style="cursor: pointer;">Siguiente</button>  
-      </div>
-    </section>
-  </body>
-  
+  <section id="Fondo">
+    <img src="./assets/Logo.png" alt="logo-Petwellness">
+    <h1>Verificación de seguridad</h1>
+    <h4>Hemos enviado un correo de confirmación para tu solicitud de cambio de contraseña. Por favor, revisa tu bandeja
+      de entrada.</h4>
+    <div>
+      <h4>Si no ves el correo, revisa la carpeta de spam o solicita un nuevo correo.</h4>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">
+      <p>{{ errorMessage }}</p>
+    </div>
+
+    <div class="botones">
+      <button class="Cancelar" routerLink="/authentication/login" style="cursor: pointer;">Cancelar</button>
+    </div>
+  </section>
+</body>
