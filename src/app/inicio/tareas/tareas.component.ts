@@ -41,7 +41,7 @@ export class TareasComponent implements OnInit {
   cargarConsultas(): void {
     this.consultaService.obtenerConsultas().subscribe((data: Consulta[]) => {
       this.consultas = data;
-      console.log('Consultas:', data);
+      //console.log('Consultas:', data);
       this.calcularEstadisticas();
     });
   }
