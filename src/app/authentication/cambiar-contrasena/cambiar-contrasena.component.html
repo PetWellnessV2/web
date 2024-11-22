@@ -1,41 +1,40 @@
 <body id="Cuerpo">
-    <section id="Fondo">
-      <img src="./assets/Logo.png" alt="logo-Petwellness">
-      <h1>Recuperar cuenta</h1>
-      <h4>
-        Ingrese una nueva contraseña para recuperar su cuenta. Asegúrese de que su nueva contraseña sea segura y
-        fácil de recordar.
-      </h4>
-  
-      <form (ngSubmit)="Cambiar_contrasena()">
-        <section class="Contra">
-          <h3>Ingrese la nueva contraseña</h3>
-          <input id="Ver-contrasena_1" type="password" name="Contrasena" [(ngModel)]="nuevaContrasena" required />
-          <img (click)="OcultarContrasena()" class="Ver-contrasena" src="./assets/ojo.png" alt="Ojo de vista de contraseña" />
-          <small *ngIf="VerContrasena">
-            <br />Debe tener "aA0".
-          </small>
-        </section>
-      
-        <section class="Contra">
-          <h3>Confirmar la nueva contraseña</h3>
-          <input id="Ver-contrasena_2" type="password" name="Confirmar-contrasena" [(ngModel)]="confirmacionContrasena" required />
-          <img (click)="OcultarContrasena()" class="Ver-contrasena" src="./assets/ojo.png" alt="Ojo de vista de contraseña" />
-          <small *ngIf="VerContrasenaDiferente">
-            <br />Las contraseñas son diferentes.
-          </small>
-        </section>
-      
-        <div class="botones">
-          <button class="Cancelar" routerLink="/authentication/login" style="cursor: pointer;">Cancelar</button>
-          <button type="submit" class="Siguiente" [disabled]="!isFormValid()" style="cursor: pointer;">Siguiente</button>
-        </div>
-      </form>
-  
-      <div *ngIf="mostrarConfirmacion" class="popup">
-        <p>Su contraseña ha sido cambiada correctamente.</p>
-        <button (click)="cerrarPopup()">Aceptar</button>
+  <section id="Fondo">
+    <img src="./assets/Logo.png" alt="logo-Petwellness">
+    <h1>Recuperar cuenta</h1>
+    <h4>
+      Ingrese una nueva contraseña para recuperar su cuenta. Asegúrese de que su nueva contraseña sea segura y
+      fácil de recordar.
+    </h4>
+
+    <form (ngSubmit)="Cambiar_contrasena()">
+      <section class="Contra">
+        <h3>Ingrese la nueva contraseña</h3>
+        <input id="Ver-contrasena_1" type="password" name="Contrasena" [(ngModel)]="nuevaContrasena" required />
+        <img (click)="OcultarContrasena()" class="Ver-contrasena" src="./assets/ojo.png" alt="Ojo de vista de contraseña" />
+        <small *ngIf="VerContrasena">
+          <br />Debe tener "aA0".
+        </small>
+      </section>
+
+      <section class="Contra">
+        <h3>Confirmar la nueva contraseña</h3>
+        <input id="Ver-contrasena_2" type="password" name="Confirmar-contrasena" [(ngModel)]="confirmacionContrasena" required />
+        <img (click)="OcultarContrasena()" class="Ver-contrasena" src="./assets/ojo.png" alt="Ojo de vista de contraseña" />
+        <small *ngIf="VerContrasenaDiferente">
+          <br />Las contraseñas son diferentes.
+        </small>
+      </section>
+
+      <div class="botones">
+        <button class="Cancelar" routerLink="/authentication/login" style="cursor: pointer;">Cancelar</button>
+        <button type="submit" class="Siguiente" [disabled]="!isFormValid()" style="cursor: pointer;">Siguiente</button>
       </div>
-    </section>
-  </body>
-  
+    </form>
+
+    <div *ngIf="mostrarConfirmacion" class="popup">
+      <p>Su contraseña ha sido cambiada correctamente.</p>
+      <button (click)="cerrarPopup()">Aceptar</button>
+    </div>
+  </section>
+</body>

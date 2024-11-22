@@ -12,6 +12,10 @@
       <p>{{ errorMessage }}</p>
     </div>
 
+    <div *ngIf="mostrarFormulario">
+      <app-cambiar-contrasena></app-cambiar-contrasena>  <!-- Aquí se inserta el componente de cambio de contraseña -->
+    </div>
+
     <div class="botones">
       <button class="Cancelar" routerLink="/authentication/login" style="cursor: pointer;">Cancelar</button>
     </div>
