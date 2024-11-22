@@ -17,7 +17,10 @@ const routes: Routes = [
   { path: 'verificacion', component: VerificacionComponent },  
   { path: 'verification-email', component: VerificationEmailComponent },
   { path: 'codigo', component: CodigoComponent },
-  { path: 'cambiar-contrasena', component: CambiarContrasenaComponent }
+  { path: 'cambiar-contrasena', component: CambiarContrasenaComponent },
+  { path: '', redirectTo: '/authentication/codigo', pathMatch: 'full' },
+  { path: 'authentication/codigo', component: CodigoComponent },
+  { path: '**', redirectTo: '/authentication/codigo' }, 
 ];
 
 @NgModule({
